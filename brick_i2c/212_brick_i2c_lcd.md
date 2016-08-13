@@ -13,10 +13,6 @@ I2Cコネクタへ接続します。
 
 ![](/img/200_i2c/connect/212_lcd_connect.jpg)
 
-## Support
-|Arduino|RaspberryPI|
-|:--:|:--:|
-|◯|◯|
 
 ## PCF8574 Datasheet
 | Document |
@@ -34,15 +30,7 @@ FaBo Brickでは、初期値に0x20が設定されています。Brick表面の�
 ![](/img/200_i2c/schematic/212_lcd.png)
 
 ## Library
-### for Arduino
-- [Arduino IDEからインストール](http://fabo.io/library_install.html)
 
-  ライブラリ名：「FaBo 212 LCD PCF8574」
-
-- [Library GitHub](https://github.com/FaBoPlatform/FaBoLCD-PCF8574-Library)
-- [Library Document](http://fabo.io/doxygen/FaBoLCD-PCF8574-Library)
-
-### for RapberryPI
 - pipからインストール
 ```
 pip install FaBoLCD_PCF8574
@@ -51,10 +39,7 @@ pip install FaBoLCD_PCF8574
 - [Library Document](http://fabo.io/doxygen/FaBoLCD-PCF8574-Python/)
 
 ## Sample Code
-### for Arduino
-上記のArduino Libraryをインストールし、スケッチの例、「FaBo 212 LCD PCF8574」からお選びください。
 
-### for RapberryPI
 上記のRapberryPI Python Libraryをインストールしてからご使用ください。
 
 ```python
@@ -92,7 +77,7 @@ except KeyboardInterrupt:
     sys.exit()
 ```
 
-## Parts
+## 構成Parts
 - PCF8574
 - LCD 1602A
 

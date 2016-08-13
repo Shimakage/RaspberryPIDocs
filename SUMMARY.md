@@ -40,7 +40,7 @@
     * [#210 GPIO I2C Brick](brick_i2c/210_brick_i2c_gpio.md)
     * [#211 7Segment LED I2C Brick](brick_i2c/211_brick_i2c_7seg.md)
     * [#212 LCD I2C Brick](brick_i2c/212_brick_i2c_lcd.md)
-    * [#213 LCD mini I2C Brick](brick_i2c/213_brick_i2c_lcd_mini.md)
+    * [#213(非対応) LCD mini I2C Brick](brick_i2c/213_brick_i2c_lcd_mini.md)
     * [#214 OLED I2C Brick](brick_i2c/214_brick_i2c_oled.md)
     * [#215 RTC I2C Brick](brick_i2c/215_brick_i2c_rtc.md)
     * [#217 AmbientLight I2C Brick](brick_i2c/217_brick_i2c_ambientlight.md)
