@@ -1,4 +1,4 @@
-# #115 Humidity Brick
+# #115 Humidity Brick(非対応)
 
 本製品はRaspberryPIには非対応
 

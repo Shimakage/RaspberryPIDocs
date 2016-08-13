@@ -11,7 +11,7 @@
     * [PIとWifiSpotでネットワーク構築](dev/pi/usbwifi.md)
     * [その他](dev/pi/etc.md)
 * [FaBoについて](fabo/README.md)
-    * [Starter Kit for Arduino](fabo/002_starterkit_arduino.md)
+    * [Starter Kit for Rasberry PI](fabo/003_starterkit_raspberrypi.md)
 * [Analog Brick](brick_analog/analog_brick.md)
     * [#101 LED Brick](brick_analog/101_brick_analog_led.md)
     * [#103 Button Brick](brick_analog/103_brick_analog_button.md)
