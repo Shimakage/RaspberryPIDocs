@@ -1,13 +1,21 @@
-FaBo
+FaBo Raspberry PI(2,3)
 =======
 
-[FaBo プロトタイピングツール](about.md)
+# 本ドキュメントについて
 
-http://fabo.io/
+IoT入門者向けのプログラム学習用のドキュメントになっています。
 
-### BLE関連
-[BLE Docs](https://fabo.gitbooks.io/bledocs/content/)
+# 対象レベル
 
-### 学校向け
-[高校生向け入門](highschool.md)
+プログラムを過去に書いたことがある
 
+# 使用言語
+
+Python
+
+# 使用ハード
+
+FaBo
+
+
+Powered by [FaBo](http://www.fabo.io)
