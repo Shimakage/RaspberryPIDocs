@@ -1,5 +1,7 @@
 # #213 LCD mini I2C Brick (非対応)
 
+本製品はRaspberryPIには非対応です。
+
 <center>![](/img/200_i2c/product/213.jpg)
 <!--COLORME-->
 
