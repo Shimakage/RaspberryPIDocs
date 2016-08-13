@@ -9,18 +9,10 @@
 I/OピンよりスライドスイッチのON/OFFをデジタル値で取得できます。
 
 ## Connecting
-### Arduino
-アナログコネクタ(A0〜A5)、またはデジタルコネクタ(2〜13)のいずれかに接続します。
-### Raspberry PI
 GPIOコネクタのいずれかに接続します。
 
 ### IchigoJam
 OUTコネクタのいずれかに接続します。
-
-## Support
-|Arduino|RaspberryPI|IchigoJam|
-|:--:|:--:|:--:|
-|◯|◯|◯|
 
 ## Schematic
 

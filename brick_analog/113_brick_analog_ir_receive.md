@@ -9,12 +9,7 @@
 I/Oピンから赤外線受信のON/OFFを取得することができます。
 
 ## Connecting
-### Arduino
-アナログコネクタ(A0〜A5)、またはデジタルコネクタ(2〜13)のいずれかに接続します。
-![](/img/100_analog/connect/113_ir_receiver_connect.jpg)
-
-### IchigoJam
-OUTコネクタのいずれかに接続します。
+GPIOコネクタに接続します。
 
 ## Support
 |Arduino|RaspberryPI|IchigoJam|
@@ -31,39 +26,7 @@ OUTコネクタのいずれかに接続します。
 ![](/img/100_analog/schematic/113_ir_receive.png)
 
 ## Sample Code
-### for Arduino
-A0コネクタに赤外線受信Brick、A1コネクタにLED Brickを接続し、赤外線を受信したらLEDを発光させます。
 
-```c
-//
-// FaBo Brick Sample
-//
-// #113 IR Receiver Brick
-//
-
-#define ir_receivePin A0
-#define ledPin A1
-
-int irState = 0;
-
-void setup() {
-  pinMode(ir_receivePin, INPUT);
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop() {
-  irState = digitalRead(ir_receivePin);
-
-  if (irState == HIGH) {
-    digitalWrite(ledPin, HIGH);
-  }
-  else {
-    digitalWrite(ledPin, LOW);
-  }
-
-}
-```
-### for Raspberry PI
 GPIO5コネクタに赤外線受信Brick、GPIO4コネクタにLED Brickを接続し、赤外線を受信したらLEDを発光させます。
 
 ```python
@@ -97,18 +60,7 @@ if __name__ == '__main__':
 
 ```
 
-### for Ichigojam
-
-IN1コネクタに赤外線受信Brick、LEDコネクタにLED Brickを接続し、赤外線を受信したらLEDを発光させます。
-
-```
-100 ' IN(n) sample program
-110 B=IN(1)
-120 IF B=1 LED 1 ELSE LED 0
-130 GOTO 110
-```
-
-## Parts
+## 構成Parts
 - 赤外線フォトトランジスタ
 
 ## GitHub

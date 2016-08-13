@@ -10,21 +10,8 @@ I/Oピンより、感圧部分に加えられた力の大きさの変化をア�
 ## Connecting
 
 ### Arduino
-アナログコネクタ(A0〜A5)のいずれかに接続します。
 
-![](/img/100_analog/connect/106_touch_connect.jpg)
-
-###Raspberry PI
 アナログコネクタ(A0〜A7)のいずれかに接続します。
-
-### IchigoJam
-アナログ用コネクタ(IN2またはANA()で設定したコネクタ)のどれかに接続します。
-
-
-## Support
-|Arduino|RaspberryPI|IchigoJam|
-|:--:|:--:|:--:|
-|◯|◯|◯|
 
 ## Datasheet
 | Document |
@@ -35,40 +22,7 @@ I/Oピンより、感圧部分に加えられた力の大きさの変化をア�
 ![](/img/100_analog/schematic/106_touch.png)
 
 ## Sample Code
-### for Arduino
-A0コネクタに接続したTouch Brickの感圧によって、D2コネクタに接続したLED Brickを点灯/消灯させています。
 
-```c
-//
-// FaBo Brick Sample
-//
-// #106 Touch Brick
-//
-
-#define buttonPin A0
-#define ledPin 2
-
-int buttonState = 0;
-
-void setup() {
-  pinMode(buttonPin, INPUT);
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop(){
-
-  buttonState = digitalRead(buttonPin);
-
-  if (buttonState == HIGH) {
-    digitalWrite(ledPin, LOW);
-  }
-  else {
-    digitalWrite(ledPin, HIGH);
-  }
-}
-```
-
-### for Raspberry PI
 A0コネクタにTouchを接続して、GPIO4コネクタに接続したLED Brickの明るさ調節に使用しています。
 ```python
 #!/usr/bin/env python
@@ -127,58 +81,7 @@ if __name__ == '__main__':
 		sys.exit(0)
 ```
 
-### for IchigoJam
-#####注意<br>アナログはIN2のみで数値取得可能です。
-デジタルの場合はIN(2)、アナログの場合がANA(2)とします。
-```
-100 'TOUCH_sample_program
-110 CLS
-120 LOCATE 10,8:PRINT "Digital =";IN(2)
-130 LOCATE 10,9:PRINT "Analog  =";ANA(2);"  "
-140 GOTO 120
-```
-加圧部分に力を加えると数値が変化します。<br>
-指で挟んで力んでみてください。<br>
-デジタル数値は、圧が強いと0に変化します。
-
-### for Edison
-A0コネクタに接続したTouch Brickの感圧によって、D2コネクタに接続したLED Brickを点灯/消灯させています。
-
-```js
-//
-// FaBo Brick Sample
-//
-// #106 Touch Brick
-//
-
-//library
-var m = require('mraa');
-
-//pin setup
-var myButton = new m.Gpio(14); //Touch sensor A0
-var myLed    = new m.Gpio(2);  //LED D2
-
-myButton.dir(m.DIR_IN);     //Touch sensor input
-myLed.dir(m.DIR_OUT);       //LED output
-
-//call loop function
-loop();
-
-function loop()
-{
-
-  if (myButton.read()){
-    myLed.write(0);
-  }
-  else {
-    myLed.write(1);
-  }
-
-  setTimeout(loop, 10);
-}
-```
-
-## Parts
+## 構成Parts
 - 感圧センサー
 
 ## GitHub

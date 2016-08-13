@@ -11,19 +11,9 @@ I/Oピンより距離センサーの正面についているレンズから物�
 測定可能な距離は10〜80cmとなっています。
 
 ## Connecting
-### Arduino
-アナログコネクタ(A0〜A5)のいずれかに接続します。
-![](/img/100_analog/connect/116_distance_connect.jpg)
-### Raspberry PI
+
 アナログコネクタ(A0〜A7)のいずれかに接続します。
 
-### IchigoJam
-アナログ用コネクタ(IN2またはANA()で設定したコネクタ)のいずれかに接続します。
-
-## Support
-|Arduino|RaspberryPI|IchigoJam|
-|:--:|:--:|:--:|
-|◯|◯|◯|
 
 ## GP2Y0A21YK Datasheet
 | Document |
@@ -31,46 +21,9 @@ I/Oピンより距離センサーの正面についているレンズから物�
 | [GP2Y0A21YK Datasheet](http://www.sharpsma.com/webfm_send/1208) |
 
 ## Sample Code
-### for Arduino
-A0コネクタに接続して、距離を計測します。
 
-```c
-//
-// FaBo Brick Sample
-//
-// #116 Distance Brick
-//
-
-#define distancePin A0 // 距離センサーピン
-
-int distanceValue = 0;
-
-void setup() {
-  // 距離センサーピンを入力用に設定
-  pinMode(distancePin, INPUT);
-  // シリアル開始 転送レート：9600bps
-  Serial.begin(9600);
-}
-
-void loop() {
-  // センサーより値を取得(0〜1023)
-  distanceValue = analogRead(distancePin);
-
-  // 取得した値を電圧に変換 (0〜5000mV)
-  distanceValue = map(distanceValue, 0, 1023, 0, 5000);
-
-  // 変換した電圧を3200(3.2v)〜500(0.5v)の値に変換後、距離に変換 (10〜80cm)
-  distanceValue = map(distanceValue, 3200, 500, 5, 80);
-
-  // 算出した距離を出力
-  Serial.println(distanceValue);
-
-  delay(100);
-}
-```
-
-### for Raspberry PI
 A0コネクタに接続し、距離を計測します。
+
 ```python
 #!/usr/bin/env python
 # coding: utf-8
@@ -115,57 +68,7 @@ if __name__ == '__main__':
         sys.exit(0)
 ```
 
-
-### for IchigoJam
-
-IN2コネクタにDistance Brickを接続して、距離に応じたアナログ値を取得し画面上に出力します。
-
-```
-100 'Distance_sample_program
-110 CLS
-120 LOCATE 0,3:PRINT "Analog  =";ANA(2);"  "
-130 GOTO 120
-```
-
-### for Edison
-A0コネクタに接続して、距離を計測します。
-
-```js
-//
-// FaBo Brick Sample
-//
-// #116 Distance Brick
-//
-
-//library
-var m = require('mraa');
-
-//pin setup
-var distance_pin = new m.Aio(0); //Distance sensor pin A0
-
-//call loop function
-loop();
-
-function arduino_map(x, in_min, in_max, out_min, out_max){
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
-
-function loop()
-{
-
-  var value = distance_pin.read();
-  // analog -> mv
-  var volt = arduino_map(value, 0, 1023, 0, 5000);
-  // mv -> distance(cm)
-  var distance = arduino_map(volt, 3200, 500, 5, 80);
-  console.log("distance:" + Math.floor(out_data));
-
-  //500 milliseconds
-  setTimeout(loop,500);
-}
-```
-
-## Parts
+## 構成Parts
 - 距離センサーモジュール GP2Y0A21YK
 
 ## GitHub

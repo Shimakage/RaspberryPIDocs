@@ -4,6 +4,7 @@
 * [RaspberryPI](dev/pi/rappi.md)
     * [RASPBIANのインストール](dev/pi/install.md)
     * [FaBoライブラリインストール(python)](dev/pi/install_library.md)
+    * [#502 OUT/IN Shield for Raspberry Pi](dev/pi/502_shield_outin_raspberrypi.md)
     * [I2CとSPIの有効化の設定方法](dev/pi/i2cspi.md)
     * [Serialの有効化](dev/pi/serial.md)
     * [PIとiPhoneでネットワーク構築](dev/pi/usb.md)
