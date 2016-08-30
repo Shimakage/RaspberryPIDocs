@@ -1,6 +1,8 @@
 FaBo Raspberry PI(2,3)
 =======
 
+![](/img/title_rasppi.png)
+
 # 本ドキュメントについて
 
 IoT入門者向けのプログラム学習用のドキュメントになっています。

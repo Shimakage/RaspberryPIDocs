@@ -1,6 +1,8 @@
 FaBo Starter Kit for Raspberry PI(2,3) 導入マニュアル
 =======
 
+![](/img/title_rasppi_starter.png)
+
 # 本ドキュメントについて
 
 FaBo Starter Kit for RaspberryPI用のチュートリアルです。
