@@ -19,38 +19,50 @@ wlan0が有効になっていれば、USB Wifi モジュールは認識されて
 
 iPhoneのティザリングスポットを確認する
 
-    $ sudo iwlist wlan0 scan | grep ネットワーク
+```shell
+$ sudo iwlist wlan0 scan | grep ネットワーク
+```
+
+例) 
+
+```shell
+$ sudo iwlist wlan0 scan | grep fabkura
+ESSID:"fabkura-gclue"
+ESSID:"fabkura-youkoso"
+```
 
 suでSuperUserに変わる。
 
-    $ sudo su
+```shell
+$ sudo su
+```
 
 pass_pharaseを追加する。    
-    
-    $ wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicaion/wpa_supplicat.conf
- 
+
+```shell    
+$ wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicaion/wpa_supplicat.conf
+```
+
 'SSID'と'pass'には、WifiSpotのメモしたネットワーク名とパスワードをいれる。
 
 また、id_strの項目を追加し、識別できるようにしておく。
 
 `/etc/wpa_supplicant/wpa_supplicant.conf`
-
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 network={
         ssid="akira"
         #psk="########""
-        psk=75d54dab398dcef5bc7fe3be5803f50083c0de5a46955d2c54aa30844d3ba30e
+        psk=****************************************************************
         id_str="iPhone"
 }
 network={
         ssid="SSID_AAAAAA"
         #psk="########"
-        psk=0716a436b7e265d026cf1a10a7eb26bab9608648ac1a76e7ef2b5bc45dab6ce5
+        psk=****************************************************************
         id_str="Wifi1"
 }
 ```
-
 
 
