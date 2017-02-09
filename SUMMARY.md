@@ -3,6 +3,7 @@
 * [はじめに](README.md)
 * [RaspberryPI](dev/pi/rappi.md)
     * [RASPBIANのインストール](dev/pi/install.md)
+    * [キーボードの日本語設定](dev/pi/keyboard.md)
     * [#502 OUT/IN Shield for Raspberry Pi](dev/pi/502_shield_outin_raspberrypi.md)
     * [#506 OUT/IN Shield for Raspberry Pi ZERO](dev/pi/506_shield_outin_raspberrypizero.md)
     * [FaBoライブラリインストール(python)](dev/pi/install_library.md)
