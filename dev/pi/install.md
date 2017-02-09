@@ -1,16 +1,6 @@
 # RASPBIANのインストール
 
-## SD FomatterでSDカードをフォーマット
-
-SD Formatterをダウンロードしインストールする。
-
-https://www.sdcard.org/downloads/formatter_4/
-
-SD FormatterでSD Cardを初期化する。
-
-![](/img/dev/pi/pi001.png)
-
-## NORBSをSDにコピー
+## RasbianをSDにコピー
 
 https://www.raspberrypi.org/downloads/
 
@@ -20,10 +10,39 @@ https://www.raspberrypi.org/downloads/
 
 ダウンロードして、解凍する。
 
-![](/img/dev/pi/pi004.png)
+MacのTerminalを立ち上げ、SDカードを抜いた状態で、下記コマンドを実行する。
 
-解凍したファイルをSDカードにまるごとコピーする。
+```shell
+$ diskutil list
+```
 
-![](/img/dev/pi/pi005.png)
+![](/img/dev/pi/pi_sd01.png)
+
+今度は、SDカードを指した状態で、下記コマンドを実行する。
+
+
+```shell
+$ diskutil list
+```
+
+Disk2が追加されているのを確認する。
+
+![](/img/dev/pi/pi_sd02.png)
+
+Disk2にアクセスするには、Disk2ではなくRdisk2にするとよい。マウント状態を解除するために下記コマンドを実行。
+
+```shell
+$ sudo diskutil unmountDisk /dev/rdisk2
+```
+
+![](/img/dev/pi/pi_sd03.png)
+
+解答したimgファイルを下記コマンドでSDカードに焼き込む。
+
+```shell
+$ sudo dd bs=1m if=/Users/sasakiakira/Downloads/2017-01-11-raspbian-jessie-lite.img  of=/dev/rdisk2
+```
+
+![](/img/dev/pi/pi_sd04.png)
 
 
