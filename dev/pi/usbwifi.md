@@ -31,16 +31,10 @@ ESSID:"fabkura-gclue"
 ESSID:"fabkura-youkoso"
 ```
 
-suでSuperUserに変わる。
-
-```shell
-$ sudo su
-```
-
 pass_pharaseを追加する。    
 
 ```shell    
-$ wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicaion/wpa_supplicat.conf
+$ sudo wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicaion/wpa_supplicat.conf
 ```
 
 'SSID'と'pass'には、WifiSpotのメモしたネットワーク名とパスワードをいれる。
@@ -65,4 +59,13 @@ network={
 }
 ```
 
+ネットワーク・インターフェースを再起動。
 
+```shell
+$ sudo ifdown wlan0
+$ sudo ifup wlan0
+```
+
+```
+$ sudo ifconfig wlan0
+```
