@@ -33,7 +33,7 @@ $ ifconfig -a
 $ sudo route add default gw 192.169.x.1
 ```
 
-xはifconfig wlan0で表示された値をいれる。
+xはifconfig -aで表示された値をいれる。
 
 
 
