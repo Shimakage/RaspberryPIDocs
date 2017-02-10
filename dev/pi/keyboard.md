@@ -24,4 +24,3 @@
 
 ![](/img/dev/pi/keyboard11.png)
 
-![](/img/dev/pi/keyboard12.png)
