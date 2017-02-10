@@ -10,6 +10,17 @@ https://www.raspberrypi.org/downloads/
 
 ダウンロードして、解凍する。
 
+時間があかかる場合は、ミラーサイトからダウンロードする。
+
+Consoleだけでいい場合は、Liteを、GUIが必要な場合は、PIXELをダウンロードする。
+
+[https://www.raspbian.org/RaspbianMirrors](https://www.raspbian.org/RaspbianMirrors)
+
+日本だと、jaistのミラーサイトなどがある。
+
+[http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/](http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/)
+
+
 MacのTerminalを立ち上げ、SDカードを抜いた状態で、下記コマンドを実行する。
 
 ```shell

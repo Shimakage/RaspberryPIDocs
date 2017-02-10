@@ -2,19 +2,26 @@
 
 ## KEYBOARDの設定
 
-![](/img/dev/pi/pi_key01.png)
+![](/img/dev/pi/keyboard01.png)
 
-![](/img/dev/pi/pi_key02.png)
+![](/img/dev/pi/keyboard02.png)
 
-![](/img/dev/pi/pi_key03.png)
+![](/img/dev/pi/keyboard03.png)
 
-![](/img/dev/pi/pi_key04.png)
+![](/img/dev/pi/keyboard04.png)
 
-![](/img/dev/pi/pi_key05.png)
+![](/img/dev/pi/keyboard05.png)
 
-![](/img/dev/pi/pi_key06.png)
+![](/img/dev/pi/keyboard06.png)
 
-![](/img/dev/pi/pi_key07.png)
+![](/img/dev/pi/keyboard07.png)
 
-![](/img/dev/pi/pi_key08.png)
+![](/img/dev/pi/keyboard08.png)
 
+![](/img/dev/pi/keyboard09.png)
+
+![](/img/dev/pi/keyboard10.png)
+
+![](/img/dev/pi/keyboard11.png)
+
+![](/img/dev/pi/keyboard12.png)
