@@ -3,6 +3,7 @@
 ## Jupyterのインストール
 
 ```
+$ apt-get install python-dev
 $ pip install jupyter
 ```
 
