@@ -2,7 +2,9 @@
 
 ## USB Wifiモジュールの確認(Raspberry PI側)
 
-    $ inconfig -a
+```shell
+$ ifconfig -a
+```
 
 wlan0が有効になっていれば、USB Wifi モジュールは認識されている
 
