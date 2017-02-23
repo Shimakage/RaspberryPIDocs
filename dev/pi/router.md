@@ -14,6 +14,6 @@ Wifi Routerを追加し、WifiのスポットからRassberryPIを見えるよう
 
 |商品名|概要|
 |:--|:--|
-|ちびファイ2 MZK-UE150N|![](/img/dev/pi/chibo001.png)|
-|ちびファイ2ac MZK-UE450AC|![](/img/dev/pi/chibo003.png)|
-|ちびファイ MZK-RP150NA|![](/img/dev/pi/chibo002.png)|
+|ちびファイ2 MZK-UE150N|![](/img/dev/pi/chibi001.png)|
+|ちびファイ2ac MZK-UE450AC|![](/img/dev/pi/chibi003.png)|
+|ちびファイ MZK-RP150NA|![](/img/dev/pi/chibi002.png)|

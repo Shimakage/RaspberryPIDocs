@@ -2,14 +2,14 @@
 
 ## 構成図
 
-![](/img/dev/pi/chibo001.png)
+![](/img/dev/pi/chibi001.png)
 
 USBポートにちびファイ2を接続する事で、eth1として認識される。(Eathernetポートはeth0)。
 eth1のinerface設定をし、固定IPを割り振る。
 
 ## ネットワーク構成図
 
-![](/img/dev/pi/chibonet001.png)
+![](/img/dev/pi/chibinet001.png)
 
 |デバイス|IP|用途|
 |:--|:--|
