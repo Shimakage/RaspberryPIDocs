@@ -55,7 +55,7 @@ _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
-jupyter notebook --ip="$_IP" --notebook-dir=~/ --config=~/.jupyter/
+jupyter notebook --ip=$_IP --notebook-dir=/home/pi/ --config=/home/pi/.jupyter/
 exit 0
 ```
 
