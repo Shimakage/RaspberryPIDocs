@@ -10,6 +10,7 @@
     * [パッケージのUpdate](dev/pi/update.md)
     * [Jupyterの設定](dev/pi/jupyter.md)
     * [Wifi Routerの設定](dev/pi/router.md)
+    * [ちびファイの設定](dev/pi/chibi.md)
     * [ちびファイ2の設定](dev/pi/chibi2.md)
     * [#502 OUT/IN Shield for Raspberry Pi](dev/pi/502_shield_outin_raspberrypi.md)
     * [#506 OUT/IN Shield for Raspberry Pi ZERO](dev/pi/506_shield_outin_raspberrypizero.md)
