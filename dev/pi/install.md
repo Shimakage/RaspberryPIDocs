@@ -6,9 +6,7 @@ https://www.raspberrypi.org/downloads/
 
 ![](/img/dev/pi/pi002.png)
 
-
 ![](/img/dev/pi/pi003.png)
-
 
 ダウンロードして、解凍する。
 

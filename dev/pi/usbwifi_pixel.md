@@ -29,6 +29,9 @@ $ ifconfig -a
 
 ![](/img/dev/pi/wifi07.png)
 
+
+## Default Gatewayの設定
+
 ```
 $ sudo route add default gw 192.169.x.1
 ```

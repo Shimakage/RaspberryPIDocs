@@ -69,3 +69,12 @@ $ sudo ifup wlan0
 ```
 $ sudo ifconfig wlan0
 ```
+
+## Default Gatewayの設定
+
+```
+$ sudo route add default gw 192.169.x.1
+```
+
+xはifconfig -aで表示された値をいれる。
+
