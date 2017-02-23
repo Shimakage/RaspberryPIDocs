@@ -36,7 +36,7 @@ ESSID:"fabkura-youkoso"
 pass_pharaseを追加する。    
 
 ```shell    
-$ sudo wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicaion/wpa_supplicat.conf
+$ sudo wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
 'SSID'と'pass'には、WifiSpotのメモしたネットワーク名とパスワードをいれる。
