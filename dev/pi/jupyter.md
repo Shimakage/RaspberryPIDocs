@@ -4,7 +4,7 @@
 
 ```
 $ apt-get install python-dev
-$ pip install jupyter
+$ sudo pip install jupyter
 ```
 
 ## 固定Tokenの作成
