@@ -18,7 +18,7 @@
     * [I2CとSPIの有効化の設定方法](dev/pi/i2cspi.md)
     * [Serialの有効化](dev/pi/serial.md)
     * [PIとiPhoneでネットワーク構築](dev/pi/usb.md)
-    * [その他](dev/pi/etc.md)
+    * [LTEモジュール](dev/pi/lte.md)
 * [FaBoについて](fabo/README.md)
     * [Starter Kit for RaspberryPI](fabo/003_starterkit_raspberrypi.md)
 * [Analog Brick](brick_analog/analog_brick.md)
