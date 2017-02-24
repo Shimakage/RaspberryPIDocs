@@ -93,6 +93,13 @@ except KeyboardInterrupt:
     sys.exit()
 ```
 
+import smbusに失敗する場合はraspi-configでI2CおよびSPIを有効化してください。
+
+```
+sudo raspi-config
+メニューから[5 Interfacing Options]>[P4 SPI]及び[P5 I2C]を選択して有効化します
+```
+
 ## 構成Parts
 - InvenSense MPU-9250
 
