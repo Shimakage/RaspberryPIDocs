@@ -51,7 +51,7 @@ $ sudo diskutil unmountDisk /dev/rdisk2
 解答したimgファイルを下記コマンドでSDカードに焼き込む。
 
 ```shell
-$ sudo dd bs=1m if=/Users/sasakiakira/Downloads/2017-01-11-raspbian-jessie-lite.img  of=/dev/rdisk2
+$ sudo dd bs=1m if=~/Downloads/2017-01-11-raspbian-jessie.img  of=/dev/rdisk2
 ```
 
 ![](/img/dev/pi/pi_sd04.png)

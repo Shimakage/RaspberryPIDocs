@@ -4,6 +4,8 @@
 
 ```
 $ apt-get install python-dev
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo python ./get-pip.py
 $ sudo pip install jupyter
 ```
 
@@ -56,7 +58,7 @@ _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
-jupyter notebook --ip=$_IP --notebook-dir=/home/pi/ --config=/home/pi/.jupyter/
+jupyter notebook --ip=$_IP --notebook-dir=/home/pi/ --config=/home/pi/.jupyter/jupyter_notebook_config.py
 exit 0
 ```
 
