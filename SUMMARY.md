@@ -60,6 +60,8 @@
     * [#303 USB Serial Brick](brick_serial/304_brick_serial_usb.md)
     * [#304 WiFi Serial Brick](brick_serial/305_brick_serial_wifi.md)
     * [#305 BLE Nordic Serial Brick](brick_serial/307_brick_serial_nordic.md)
+* [Servo]
+    * [Servo](servo/servo.md)
 * [Color LED Brick](brick_color/3pin_led_brick.md)
     * [#401 Color LED Brick](brick_color/401_brick_3pin_led.md)
     * [#402 Color LED Ring Brick](brick_color/402_brick_3pin_led_circle.md)
