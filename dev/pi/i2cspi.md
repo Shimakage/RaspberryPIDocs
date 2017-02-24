@@ -15,7 +15,7 @@ sudo reboot
 * raspi-configでI2CおよびSPIの有効化をします
 ```shell
 sudo raspi-config
- メニューから[8 Advanced Options]>[A6 SPI]および[A7 I2C]を選択して有効化します
+ メニューから[5 Interfacing Options]>[P4 SPI]及び[P5 I2C]を選択して有効化します
 ```
 * I2C動作確認用のパッケージをインストールします
 ```shell
