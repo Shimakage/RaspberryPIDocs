@@ -12,4 +12,3 @@ $ ping www.google.com
 $ sudo apt-get update
 $ sudo apt-get upgrade
 ```
-

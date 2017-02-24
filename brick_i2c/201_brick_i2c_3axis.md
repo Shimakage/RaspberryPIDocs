@@ -43,7 +43,7 @@ I2Cで3軸の加速度データを取得することがきます。
 
 - pipからインストール
 ```
-pip install FaBo3Axis_ADXL345
+sudo pip install FaBo3Axis_ADXL345
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBo3Axis-ADXL345-Python)
 - [Library Document](http://fabo.io/doxygen/FaBo3Axis-ADXL345-Python/)
