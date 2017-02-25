@@ -18,4 +18,4 @@ Wifi Routerを追加し、WifiのスポットからRassberryPIを見えるよう
 |ちびファイ2 MZK-UE150N|![](/img/dev/pi/chibi001.png)|
 |ちびファイ2ac MZK-UE450AC|![](/img/dev/pi/chibi003.png)|
 |ちびファイ MZK-RP150NA|![](/img/dev/pi/chibi002.png)|
-|WRH-583DR2-D|![](/img/dev/pi/elecom01.png)|
+|WRH-583DR2-D|![](/img/dev/pi/elecom001.png)|
