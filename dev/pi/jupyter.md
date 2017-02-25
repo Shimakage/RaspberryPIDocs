@@ -3,9 +3,11 @@
 ## Jupyterのインストール
 
 ```
-$ apt-get install python-dev
-$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo apt-get install python-dev
+$ sudo wget https://bootstrap.pypa.io/get-pip.py
 $ sudo python ./get-pip.py
+$ sudo pip install --uprade setuptools pip
+$ sudo apt-get install build-essential python-dev
 $ sudo pip install jupyter
 ```
 

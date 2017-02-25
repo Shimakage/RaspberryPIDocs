@@ -10,19 +10,19 @@ wlan0が有効になっていれば、USB Wifi モジュールは認識されて
 
 ![](/img/dev/pi/pi101.png)
 
-## WifiSpotの情報をメモする
+## Wifiの情報をメモする
 
 | 項目 | 値 |
 | -- | -- |
-| ネットワーク名(SSID) | SSID1_AAAAA |
-| パスワード | ######## |
+| ネットワーク名(SSID) | 接続先のSSID |
+| パスワード | 接続先のパスワード |
 
 ## SSID, PASSの設定(Raspberry PI側)
 
 iPhoneのティザリングスポットを確認する
 
 ```shell
-$ sudo iwlist wlan0 scan | grep ネットワーク
+$ sudo iwlist wlan0 scan | grep 接続先のSSID
 ```
 
 例) 
@@ -36,10 +36,11 @@ ESSID:"fabkura-youkoso"
 pass_pharaseを追加する。    
 
 ```shell    
-$ sudo wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicant/wpa_supplicant.conf
+$ sudo chmod 666 /etc/wpa_supplicant/wpa_supplicant.conf
+$ sudo wpa_passphrase '接続先のSSID' '接続先のパスワード' >> /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
-'SSID'と'pass'には、WifiSpotのメモしたネットワーク名とパスワードをいれる。
+'接続先のSSID'と'接続先のパスワード'には、接続したいWifiのSSID名とパスワードをいれる。
 
 また、id_strの項目を追加し、識別できるようにしておく。
 
@@ -48,14 +49,8 @@ $ sudo wpa_passphrase 'SSID' 'pass' >> /etc/wpa_supplicant/wpa_supplicant.conf
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 network={
-        ssid="akira"
-        #psk="########""
-        psk=****************************************************************
-        id_str="iPhone"
-}
-network={
-        ssid="SSID_AAAAAA"
-        #psk="########"
+        ssid="接続先のSSID"
+        #psk="接続先のパスワード"
         psk=****************************************************************
         id_str="Wifi1"
 }
@@ -68,15 +63,9 @@ $ sudo ifdown wlan0
 $ sudo ifup wlan0
 ```
 
-```
-$ sudo ifconfig wlan0
-```
+# 接続テスト
 
-## Default Gatewayの設定
-
+```shell
+$ ping www.google.com
+$ traceroute www.google.com
 ```
-$ sudo route add default gw 192.169.x.1
-```
-
-xはifconfig -aで表示された値をいれる。
-
