@@ -21,12 +21,6 @@ GPIO5コネクタに接続したButton Brickの入力により、GPIO4コネク�
 
 ```python
 # coding: utf-8
-#
-# FaBo Brick Sample
-#
-# brick_analog_button
-#
-
 import RPi.GPIO as GPIO
 
 LEDPIN = 4
@@ -37,15 +31,21 @@ GPIO.setmode( GPIO.BCM )
 GPIO.setup( LEDPIN, GPIO.OUT )
 GPIO.setup( BUTTONPIN, GPIO.IN )
 
-while True:
-    # ボタン押下判定
-	if( GPIO.input( BUTTONPIN ) ):
-	    # LED点灯
-        GPIO.output( LEDPIN, True )
-	else:
-	    # LED消灯
-		GPIO.output( LEDPIN, False )
+if __name__ == '__main__':
+	try:
+   		while True:
+    	# ボタン押下判定
+		if( GPIO.input( BUTTONPIN ) ):
+	    	# LED点灯
+        	GPIO.output( LEDPIN, True )
+		else:
+	    	# LED消灯
+			GPIO.output( LEDPIN, False )
+	except KeyboardInterrupt:
+    	GPIO.cleanup()
+    	sys.exit(0)
 ```
+
 
 ## 構成Parts
 - 12mm角タクトスイッチ

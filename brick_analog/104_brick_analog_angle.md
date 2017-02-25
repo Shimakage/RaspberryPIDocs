@@ -22,15 +22,7 @@ LED Brickの明るさを調節する際などに使用します。
 A0コネクタにAngle Brickを接続して、D3コネクタに接続したLED Brickの明るさ調節に使用しています。
 
 ```python
-#!/usr/bin/env python
 # coding: utf-8
-
-#
-# FaBo Brick Sample
-#
-# #104 Angle Brick
-#
-
 import RPi.GPIO as GPIO
 import spidev
 import time
@@ -55,20 +47,36 @@ LED.start(0)
 spi = spidev.SpiDev()
 spi.open(0,0)
 
+#######################################################################
 def readadc(channel):
+	"""
+	Analog Data Converterの値を読み込む
+	@channel チャンネル番号
+	"""
 	adc = spi.xfer2([1,(8+channel)<<4,0])
 	data = ((adc[1]&3) << 8) + adc[2]
 	return data
 
-def arduino_map(x, in_min, in_max, out_min, out_max):
+#######################################################################
+def map(x, in_min, in_max, out_min, out_max):
+	"""
+	map関数
+	@x 変換したい値
+	@in_min 変換前の最小値
+	@in_max 変換前の最大値
+	@out_min 変換後の最小
+	@out_max 変換後の最大値
+	@return 変換された値
+	"""
 	return (x - in_min) * (out_max - out_min) // (in_max - in_min) + out_min
+
 
 if __name__ == '__main__':
 	try:
 		while True:
 			data = readadc(ANGLEPIN)
 			print("adc : {:8} ".format(data))
-			value = arduino_map(data, 0, 1023, 0, 100)
+			value = map(data, 0, 1023, 0, 100)
 			LED.ChangeDutyCycle(value)
 			time.sleep( 0.01 )
 	except KeyboardInterrupt:
