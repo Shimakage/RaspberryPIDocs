@@ -16,12 +16,21 @@ $ sudo python ./get-pip.py
 $ sudo pip install jupyter
 ```
 
+30分ほど時間がかかります。
+
 ## 他の便利なライブラリのインストール
 
 ```shell
 $ sudo pip install panda numpy
+```
+
+10分ほど時間がかかります。
+
+```shell
 $ sudo apt-get install python-matplotlib
 ```
+
+
 
 ## 固定Tokenの作成
 

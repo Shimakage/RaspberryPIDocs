@@ -27,9 +27,6 @@
     * [FaBoライブラリインストール(python)](dev/pi/install_library.md)
     * [I2CとSPIの有効化の設定方法](dev/pi/i2cspi.md)
     * [Serialの有効化](dev/pi/serial.md)
-* Network関連
-    * [PIとiPhoneでネットワーク構築](dev/pi/usb.md)
-    * [LTEモジュール](dev/pi/lte.md)
 * [Analog Brick](brick_analog/analog_brick.md)
     * [#101 LED Brick](brick_analog/101_brick_analog_led.md)
     * [#102(非対応) Buzzer Brick](brick_analog/102_brick_analog_buzzer.md)
@@ -84,4 +81,8 @@
 * Case
     * [RaspberryPI](1104_case_raspberrypi.md)
     * [RaspberryPiZero](1111_case_raspberrypi_zero.md)
+* その他
+    * [PIとiPhoneでネットワーク構築](dev/pi/usb.md)
+    * [LTEモジュール](dev/pi/lte.md)
+    * [画面キャプチャーを取る](dev/pi/capture.md)
  

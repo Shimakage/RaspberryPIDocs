@@ -25,7 +25,7 @@ wlan0が有効になっていれば、USB Wifi モジュールは認識されて
 
 ## SSID, PASSの設定(Raspberry PI側)
 
-iPhoneのティザリングスポットを確認する
+Wifiスポットを確認する
 
 ```shell
 $ sudo iwlist wlan0 scan | grep 接続先のSSID
