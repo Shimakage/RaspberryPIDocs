@@ -1,14 +1,27 @@
 # Jupyter
 
-## Jupyterのインストール
+## PIPのインストール
 
-```
+```shell
 $ sudo apt-get install python-dev
 $ sudo wget https://bootstrap.pypa.io/get-pip.py
 $ sudo python ./get-pip.py
-$ sudo pip install --uprade setuptools pip
-$ sudo apt-get install build-essential python-dev
+```
+
+* `sudo apt-get install python-pip`ではうまくpipがインストールできない。
+
+## Jupyterのインストール
+
+```shell
+$ sudo pip install --uprade setuptools
 $ sudo pip install jupyter
+```
+
+## 他の便利なライブラリのインストール
+
+```shell
+$ sudo pip install panda numpy
+$ sudo apt-get install python-matplotlib
 ```
 
 ## 固定Tokenの作成
@@ -60,7 +73,19 @@ _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
-jupyter notebook --ip=$_IP --notebook-dir=/home/pi/ --config=/home/pi/.jupyter/jupyter_notebook_config.py
+jupyter notebook --ip=$_IP --notebook-dir=/home/pi/ --config=/home/pi/.jupyter/jupyter_notebook_config.py &
 exit 0
 ```
+
+## Browserから起動
+
+```
+$ ifconfig -a
+```
+
+RaspberryPIのIPアドレスを確認し、自分のマシンのブラウザから
+
+> http://192.168.x.x:8888/
+
+8888番ポートに接続する。
 
