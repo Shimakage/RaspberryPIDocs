@@ -1,5 +1,9 @@
 # SSHの設定
 
+```
+$ sudo raspi-config
+```
+
 ![](/img/dev/pi/ssh001.png)
 
 ![](/img/dev/pi/ssh002.png)

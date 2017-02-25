@@ -13,3 +13,7 @@ $ sudo apt-get upgrade
 ```
 
 インストールされてるパッケージの更新をおこなう。この作業は、30分から1時間程度かかる。
+
+```shell
+$ sudo apt-get dist-upgrade
+```

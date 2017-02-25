@@ -6,8 +6,8 @@ RaspberryPIの初期状態ではSerial(Uart)を使用することができませ
 FaBoのシリアルBrickを利用するために、ライブラリをインストールする必要があります。
 以下のコマンドにより「pyserial」をインストールして下さい。
 
-```
-sudo pip install pyserial
+```shell
+$ sudo pip install pyserial
 ```
 
 ## RaspberryPIのバージョン別対応
