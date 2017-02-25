@@ -13,7 +13,6 @@ $ sudo python ./get-pip.py
 ## Jupyterのインストール
 
 ```shell
-$ sudo pip install --uprade setuptools
 $ sudo pip install jupyter
 ```
 

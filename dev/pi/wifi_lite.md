@@ -1,5 +1,11 @@
 # PIとWifiSpotでネットワーク構築
 
+## USB Wifiドングル
+
+USB WifiドングルをUSBに接続する。
+
+![](/img/dev/pi/zero_wifi001.png)
+
 ## USB Wifiモジュールの確認(Raspberry PI側)
 
 ```shell
