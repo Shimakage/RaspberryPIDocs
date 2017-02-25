@@ -23,7 +23,7 @@ eth1のinerface設定をし、固定IPを割り振る。
 
 ```
 interface eth1
-static ip_address=192.168.111.100/32
+static ip_address=192.168.111.100/24
 static routers=192.168.111.1
 ```
 

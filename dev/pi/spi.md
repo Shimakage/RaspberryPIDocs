@@ -19,8 +19,9 @@ $ sudo raspi-config
 ## SPI開発用のパッケージをインストールします
 
 ```shell
-git clone git://github.com/doceme/py-spidev
-cd py-spidev
-sudo python setup.py install
+$ sudo apt-get install git
+$ git clone git://github.com/doceme/py-spidev
+$ cd py-spidev
+$ sudo python setup.py install
 ```
 

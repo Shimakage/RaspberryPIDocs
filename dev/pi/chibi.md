@@ -22,7 +22,7 @@ Ethenetポートにちびファイを接続することで、IPを割り振る�
 
 ```
 interface eth0
-static ip_address=192.168.111.100/32
+static ip_address=192.168.111.100/24
 static routers=192.168.111.1
 ```
 
