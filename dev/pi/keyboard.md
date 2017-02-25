@@ -22,5 +22,7 @@
 
 ![](/img/dev/pi/keyboard10.png)
 
-![](/img/dev/pi/keyboard11.png)
+```
+$ sudo service keyboard-setup restart
+```
 
