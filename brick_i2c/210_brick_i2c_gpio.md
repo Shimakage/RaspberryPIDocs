@@ -29,8 +29,9 @@ I2Cコネクタへ接続します。
 ## Library
 
 - pipからインストール
+
 ```
-pip install FaBoGPIO_PCAL6408
+$ sudo pip install FaBoGPIO_PCAL6408
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoGPIO-PCAL6408-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoGPIO-PCAL6408-Python/)
@@ -39,17 +40,6 @@ pip install FaBoGPIO_PCAL6408
 
 ```python
 # coding: utf-8
-## @package FaBoGPIO_PCAL6408.py
-#  This is a library for the FaBo GPIO I2C Brick.
-#
-#  http://fabo.io/210.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBoGPIO_PCAL6408
 import time
 import sys

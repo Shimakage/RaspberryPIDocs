@@ -30,9 +30,11 @@ FaBoBrickでは、0x68、または0x69の２種類を使用しています。
 ## Library
 
 - pipからインストール
+
 ```
-pip install FaBoKTemp_MCP3421
+$ sudo pip install FaBoKTemp_MCP3421
 ```
+
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoKTemp-MCP3421-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoKTemp-MCP3421-Python/)
 
@@ -53,125 +55,21 @@ sudo i2cdetect -y 1
 
 ```python
 # coding: utf-8
-#
-# FaBo Brick Sample
-#
-# #209 Ktemp I2C Brick
-#
-
-import smbus
+import FaBoKTemp_MCP3421
 import time
+import sys
 
-ADDRESS = 0x69 #MCP3421 device address 環境に合ったデバイスアドレス
-CHANNEL = 1
-CTLREG = 0x9f
-mvuv = 1 << (3+2*3)
-cp = 407  #プローブ補正値
+mcp3421 = FaBoKTemp_MCP3421.MCP3421()
 
-class MCP3421:
-    def __init__(self, bus, addr):
-        self.bus = smbus.SMBus(bus)
-        self.addr = addr
-
-    def writebyte(self, cmd, data):
-        self.bus.write_byte_data(self.addr, cmd, data)
-
-    def readblock(self, cmd, len):
-        return self.bus.read_i2c_block_data(self.addr, cmd, len)
-
-if __name__ == '__main__':
-
-    dev = MCP3421(CHANNEL, ADDRESS)
-
-     #初期化
-    dev.writebyte(CTLREG,0)
-
+try:
     while True:
-          #データ取得
-        read_data = dev.readblock(CTLREG, 4)
+        t = mcp3421.read()
+        sys.stdout.write("\rKTemp=%f" % (t))
+        sys.stdout.flush()
+        time.sleep(0.5)
 
-          #取得データを結合
-        data = (read_data[0] << 16) + (read_data[1] << 8) + read_data[2]
-
-          #取得データを温度に変換
-        temp = (data *1000/mvuv + cp) / 40.7
-
-          #温度出力
-        print "temp:%3.2f C" % (temp)
-        print
-        time.sleep(1)
-```
-### for Ichigojam
-このサンプルは、I2Cコネクタに接続したKtemp BrickにK型熱電対を接続し、熱電対から取得した値を温度に変換し画面上に出力します。
-```
-10 'FaBo Brick Sample
-20 '#209 Ktemp I2C Brick
-30 CLS
-100 'slave address #68-#6F
-110 D=#68
-
-200 'address set
-210 POKE #800,#9f,0,4
-
-300 'init
-310 A=I2CW(D,#800,1,#801,1)
-
-400 'read
-410 A=I2CR(D,#800,1,#810,4)
-420 IF PEEK(#810) & 0xFF THEN S=1 ELSE S=0
-430 T=PEEK(#811)<<8 | PEEK(#812)
-440 T=T/128*125+T%128*125/128 +500:'(T*1000)/1024+500
-450 T=T/3
-
-500 'output
-510 LOCATE 0,3
-520 ?"KTEMP:";
-530 IF T<0 THEN T=T*-1:?"-";
-540 ?T/10;".";T%10;"  ":'T/10
-
-600 'loop
-610 WAIT 5
-620 GOTO 410
-```
-
-### for Edison
-このサンプルは、I2Cコネクタに接続したKtemp BrickにK型熱電対を接続し、熱電対から取得した値を温度に変換してコンソールに出力します。
-```javascript
-//
-// FaBo Brick Sample
-//
-// #209 Ktemp I2C Brick
-//
-
-var m = require('mraa');
-var i2c = new m.I2c(0);
-
-i2c.address(0x68);
-
-var CTLREG = 0x9f;
-var mvuv = 1 << (3+2*3);
-var cp = 407;
-
-var read_data = new Buffer(4);
-
-// init
-i2c.writeReg(CTLREG, 0);
-
-loop();
-
-function loop()
-{
-    // data read
-    read_data = i2c.readBytesReg(CTLREG, 4);
-
-    var data = (read_data[0] << 16) + (read_data[1] << 8) + read_data[2];
-
-    var temp = Math.floor((data * 1000 / mvuv + cp) / 40.7*100)/100;
-
-    console.log("temp:" + temp);
-    console.log("");
-    setTimeout(loop, 1000);
-}
+except KeyboardInterrupt:
+    sys.exit()
 ```
 
 ## Parts

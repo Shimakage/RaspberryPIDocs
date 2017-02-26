@@ -72,10 +72,12 @@ except KeyboardInterrupt:
 
 import smbusに失敗する場合はraspi-configでI2C有効化してください。
 
-```
+```shell
 sudo raspi-config
-メニューから[7 Advanced Options]>[P5 I2C]を選択して有効化します
 ```
+
+メニューから[7 Advanced Options]>[P5 I2C]を選択して有効化します
+
 
 ## 構成Parts
 - Analog Devices ADXL345
