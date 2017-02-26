@@ -30,7 +30,7 @@ I2Cコネクタへ接続します。
 
 - pipからインストール
 ```
-pip install FaBoBarometer_MPL115
+sudo pip install FaBoBarometer_MPL115
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoBarometer-MPL115-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoBarometer-MPL115-Python/)
@@ -40,18 +40,6 @@ I2Cコネクタに接続したBarometer Brickより、気圧、温度、標高21
 
 ```c
 # coding: utf-8
-## @package FaBoBarometer_MPL115
-#  This is a library for the FaBo Barometer I2C Brick.
-#
-#  http://fabo.io/204.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
-
 import FaBoBarometer_MPL115
 import time
 import sys
@@ -60,13 +48,12 @@ mpl115 = FaBoBarometer_MPL115.MPL115()
 
 try:
     while True:
-        data  = mpl115.readData()
-        a_hpa = mpl115.readHpa(212.0)
+        d  = mpl115.readData()
+        h = mpl115.readHpa(212.0)
 
-        print "hpa  = ", data['hpa']
-        print "temp = ", data['temp']
-        print "hpa_aizu = ", a_hpa
-        print
+        sys.stdout.write("\rhda = %f, temp = %f, hda_aizu = %f" % (d['hpa'],  d['temp'], h))
+        sys.stdout.flush()
+        
         time.sleep(1)
 
 except KeyboardInterrupt:
