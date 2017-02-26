@@ -3,12 +3,15 @@
 #### サーボを動かすサンプルコード
 
 ```python
+# coding: utf-8
 import RPi.GPIO as GPIO
 import time
 
+SERVOPIN = 23
+
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(23,GPIO.OUT)
-servo=GPIO.PWM(23,50)
+GPIO.setup(SERVOPIN,GPIO.OUT)
+servo=GPIO.PWM(SERVOPIN,50)
 servo.start(0.0)
 for i in range(2,11):
        servo.ChangeDutyCycle(i)
