@@ -43,7 +43,7 @@ import time
 from neopixel import *
 
 # LED strip configuration:
-LED_COUNT = 12  # LEDの数.
+LED_COUNT = 5  # LEDの数.
 LED_PIN = 18      # Color LED Brickの接続先.
 LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA = 5 # DMA channel to use for generating signal (try 5)
@@ -55,24 +55,17 @@ c = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_
 c.begin()
 
 m = 0
-r = 0
-b = 255
-
 while True:
-    for i in range(LED_COUNT):
-        if m%12 == i:
-            c.setPixelColor(i, Color(100,r,b)) 
-        else:
-            c.setPixelColor(i, Color(0,0,0))
+    c.setPixelColor(0, Color(m,0,0)) 
+    c.setPixelColor(1, Color(0,m,0)) 
+    c.setPixelColor(2, Color(0,0,m)) 
+    c.setPixelColor(3, Color(m,0,m)) 
+    c.setPixelColor(4, Color(m,m,0)) 
     c.show()
     m += 1
-    r += 5
-    b -= 5
-    if r > 255:
-        r = 0
-    if b < 0:
-        b = 255
-    time.sleep(0.1)
+    if m > 255:
+      m = 0
+    time.sleep(0.01)
 ```
 
 ## Parts
