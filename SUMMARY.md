@@ -33,6 +33,8 @@
     * [Jupyterの基本操作](dev/pi/jupyter_helloworld.md)
     * [Jupyterの標準出力](dev/pi/jupyter_print.md)
     * [Jupyterのコマンドの実行](dev/pi/jupyter_cmd.md)
+* PIP
+    * [PIPについて](dev/pi/about_pip.md)
 * [Analog Brick](brick_analog/analog_brick.md)
     * [#101 LED Brick](brick_analog/101_brick_analog_led.md)
     * [#102(非対応) Buzzer Brick](brick_analog/102_brick_analog_buzzer.md)
@@ -72,7 +74,7 @@
     * [#303 USB Serial Brick](brick_serial/304_brick_serial_usb.md)
     * [#304 WiFi Serial Brick](brick_serial/305_brick_serial_wifi.md)
     * [#305 BLE Nordic Serial Brick](brick_serial/307_brick_serial_nordic.md)
-* [Servo]
+* Servo
     * [Servo](servo/servo.md)
 * [Color LED Brick](brick_color/3pin_led_brick.md)
     * [#401 Color LED Brick](brick_color/401_brick_3pin_led.md)
