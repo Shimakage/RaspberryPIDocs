@@ -46,17 +46,6 @@ I2Cコネクタに7seg Brickを接続し、「0〜９」を順番に表示させ
 
 ```python
 # coding: utf-8
-## @package FaBo7seg_TLC59208
-#  This is a library for the FaBo 7seg I2C Brick.
-#
-#  http://fabo.io/211.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBo7Seg_TLC59208
 import time
 
@@ -76,19 +65,8 @@ except KeyboardInterrupt:
 
 それぞれの部位を光らせます。
 
-```c
+```python
 # coding: utf-8
-## @package FaBo7seg_TLC59208
-#  This is a library for the FaBo 7seg I2C Brick.
-#
-#  http://fabo.io/211.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBo7Seg_TLC59208
 import time
 

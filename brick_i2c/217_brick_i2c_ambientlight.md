@@ -29,8 +29,9 @@ I2Cコネクタへ接続します。
 ## Library
 
 - pipからインストール
+
 ```
-pip install FaBoAmbientLight_ISL29034
+$sudo pip install FaBoAmbientLight_ISL29034
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoAmbientLight-ISL29034-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoAmbientLight-ISL29034-Python/)
@@ -41,29 +42,20 @@ pip install FaBoAmbientLight_ISL29034
 
 ```python
 # coding: utf-8
-## @package FaBoRTC_PCF2129
-#  This is a library for the FaBo Ambient Light I2C Brick.
-#
-#  http://fabo.io/217.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBoAmbientLight_ISL29034
 import time
 import sys
 
-light = FaBoAmbientLight_ISL29034.ISL29034()
+ISL29034 = FaBoAmbientLight_ISL29034.ISL29034()
 
 try:
     while True:
 
-        lux  = light.read()
+        lux  = ISL29034.read()
 
-        print "Lux = ", lux
+        sys.stdout.write("\rLux=%f" % lux)
+        sys.stdout.flush()
+
         time.sleep(0.5)
 
 except KeyboardInterrupt:

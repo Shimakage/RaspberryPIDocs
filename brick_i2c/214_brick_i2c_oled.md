@@ -29,8 +29,9 @@ I2Cコネクタへ接続します。
 ## Library
 
 - pipからインストール
+
 ```
-pip install FaBoOLED_EROLED096
+$ sudo pip install FaBoOLED_EROLED096
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoOLED-EROLED096-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoOLED-EROLED096-Python/)
@@ -41,17 +42,6 @@ pip install FaBoOLED_EROLED096
 
 ```python
 # coding: utf-8
-## @package FaBoOLED_EROLED096
-#  This is a library for the FaBo OLED I2C Brick.
-#
-#  http://fabo.io/214.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBoOLED_EROLED096
 import time
 import sys
