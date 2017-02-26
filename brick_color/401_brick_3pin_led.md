@@ -24,53 +24,44 @@ RGB Color LEDを使ったBrickです。
 ## Schematic
 ![](/img/400_led/schematic/401_led_one.png)
 
-## Sample Code
-### for Arduino
-このサンプルコードでは外部ライブラリを使用します。
+## Libraryの設定
 
-https://github.com/adafruit/Adafruit_NeoPixel よりAdafruit_NeoPixelライブラリをインストールしてください。
+```
+$ sudo apt-get install scons swig
+$ git clone https://github.com/jgarff/rpi_ws281x.git
+$ cd rpi_ws281x
+$ scons
+$ cd python
+$ sudo python setup.py install
+```
 
-```c
-//
-// FaBo Brick Sample
-//
-// brick_3pin_led
-//
-// Adafruit_NeoPixel Library Downloads
-// https://github.com/adafruit/Adafruit_NeoPixel
+## Sample
 
-#include <Adafruit_NeoPixel.h>
+```python
+# coding: utf-8
+import time
+from neopixel import *
 
-int ledPin = A0;
-int numPixels = 12;
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(numPixels, ledPin, NEO_GRB + NEO_KHZ800);
+# LED strip configuration:
+LED_COUNT = 1  # LEDの数.
+LED_PIN = 18      # Color LED Brickの接続先.
+LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800khz)
+LED_DMA = 5 # DMA channel to use for generating signal (try 5)
+LED_BRIGHTNESS = 255 # Set to 0 for darkest and 255 for brightest
+LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 
-void setup() {
-  pixels.begin();
-  pixels.show();
-}
+# Color sensor
+c = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS)
+c.begin()
 
-void loop() {
-  int i;
-  for(i=0; i<pixels.numPixels(); i++) {
-    pixels.setPixelColor(i, pixels.Color(128, 0, 0));
-  }
-  pixels.show();
-  delay(500);
-
-  for(i=0; i<pixels.numPixels(); i++) {
-    pixels.setPixelColor(i, pixels.Color(0, 128, 0));
-  }
-  pixels.show();
-  delay(500);
-
-  for(i=0; i<pixels.numPixels(); i++) {
-    pixels.setPixelColor(i, pixels.Color(0, 0, 128));
-  }
-  pixels.show();
-  delay(500);
-
-}
+r = 0
+while True:
+    c.setPixelColor(0, Color(r,100,100)) 
+    c.show()
+    r += 1
+    if r > 255:
+        r = 0
+    time.sleep(0.01)
 ```
 
 ## Parts
