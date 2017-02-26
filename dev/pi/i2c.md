@@ -16,6 +16,12 @@ $ sudo raspi-config
 
 ![](/img/dev/pi/i2c004.png)
 
+## SMBUSにインストール
+
+```shell
+$ sudo apt-get install python-smbus
+```
+
 ## I2C動作確認用のパッケージをインストールします
 
 ```shell
@@ -44,12 +50,4 @@ I2CのBrickが接続されている場合、次のコマンドでI2Cアドレス
 $ sudo i2cdetect -y 1
 ```
 * サンプルで使用している、Pythonモジュールをインストールします
-
-```shell
-sudo apt-get install python-smbus
-sudo apt-get install python-rpi.gpio
-git clone git://github.com/doceme/py-spidev
-cd py-spidev
-sudo python setup.py install
-```
 
