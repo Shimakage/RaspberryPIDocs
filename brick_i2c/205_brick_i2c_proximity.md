@@ -30,8 +30,9 @@ I2Cコネクタへ接続します。
 ## Library
 
 - pipからインストール
-```
-pip install FaBoProximity_VCNL4010
+
+```shell
+$ sudo pip install FaBoProximity_VCNL4010
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoProximity-VCNL4010-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoProximity-VCNL4010-Python/)
@@ -42,17 +43,6 @@ pip install FaBoProximity_VCNL4010
 
 ```python
 # coding: utf-8
-## @package FaBoProximity_VCNL4010
-#  This is a library for the FaBo Proximity I2C Brick.
-#
-#  http://fabo.io/205.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBoProximity_VCNL4010
 import time
 import sys
@@ -61,11 +51,10 @@ vcnl4010 = FaBoProximity_VCNL4010.VCNL4010()
 
 try:
     while True:
-        prox = vcnl4010.readProx()
-        ambi = vcnl4010.readAmbi()
-
-        print "Prox = ", prox,
-        print "Ambi = ", ambi
+        p = vcnl4010.readProx()
+        a = vcnl4010.readAmbi()
+        sys.stdout.write("\rProx=%f, Ambi=%f" % (p,  a))
+        sys.stdout.flush()
 
         time.sleep(1)
 

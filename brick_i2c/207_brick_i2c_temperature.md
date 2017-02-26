@@ -31,7 +31,7 @@ I2Cコネクタへ接続します。
 
 - pipからインストール
 ```
-pip install FaBoTemperature_ADT7410
+$ sudo pip install FaBoTemperature_ADT7410
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoTemperature-ADT7410-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoTemperature-ADT7410-Python/)
@@ -40,16 +40,6 @@ pip install FaBoTemperature_ADT7410
 
 ```python
 # coding: utf-8
-## @package faboTemperature.py
-#  This is a library for the FaBo Temperature I2C Brick.
-#
-#  http://fabo.io/207.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
 
 import FaBoTemperature_ADT7410
 import time
@@ -59,8 +49,9 @@ adt7410 = FaBoTemperature_ADT7410.ADT7410()
 
 try:
     while True:
-        temp = adt7410.read()
-        print "Temperature = ", temp
+        t = adt7410.read()
+        sys.stdout.write("\rTemp=%f" % t)
+        sys.stdout.flush()
 
         time.sleep(0.5)
 

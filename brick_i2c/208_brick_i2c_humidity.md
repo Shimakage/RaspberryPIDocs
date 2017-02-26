@@ -28,9 +28,11 @@ I2Cコネクタへ接続します。
 ## Library
 
 - pipからインストール
+
 ```
-pip install FaBoHumidity_HTS221
+$ sudo pip install FaBoHumidity_HTS221
 ```
+
 - [Library GitHub](https://github.com/FaBoPlatform/FaBoHumidity-HTS221-Python)
 - [Library Document](http://fabo.io/doxygen/FaBoHumidity-HTS221-Python/)
 
@@ -39,17 +41,6 @@ pip install FaBoHumidity_HTS221
 上記のRapberryPI Python Libraryをインストールしてからご使用ください。
 ```python
 # coding: utf-8
-## @package FaBoHumidity_HTS221
-#  This is a library for the FaBo Humidity I2C Brick.
-#
-#  http://fabo.io/208.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBoHumidity_HTS221
 import time
 import sys
@@ -58,12 +49,10 @@ hts221 = FaBoHumidity_HTS221.HTS221()
 
 try:
     while True:
-        humi = hts221.readHumi()
-        temp = hts221.readTemp()
-        print "Humidity = ", humi
-        print "Temp     = ", temp
-        print
-
+        h = hts221.readHumi()
+        t = hts221.readTemp()
+        sys.stdout.write("\rHumidity=%f,Temp=%f" % (h, t))
+        sys.stdout.flush()
         time.sleep(1)
 
 except KeyboardInterrupt:

@@ -38,7 +38,7 @@ sudo pip install FaBoBarometer_MPL115
 ## Sample Code
 I2Cコネクタに接続したBarometer Brickより、気圧、温度、標高212mの気圧を取得し、シリアルモニタに出力します。
 
-```c
+```python
 # coding: utf-8
 import FaBoBarometer_MPL115
 import time
