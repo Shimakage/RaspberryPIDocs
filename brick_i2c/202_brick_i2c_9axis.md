@@ -39,7 +39,7 @@ MPU-9250は、三軸加速度、ジャイロ用とコンパス用の2つのI2C S
 
 - pipからインストール
 ```
-pip install FaBo9Axis_MPU9250
+$ sudo pip install FaBo9Axis_MPU9250
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBo9AXIS-MPU9250-Python)
 - [Library Document](http://fabo.io/doxygen/FaBo9AXIS-MPU9250-Python/)
@@ -52,17 +52,6 @@ I2Cコネクタに接続した9Axis I2C Brickより３軸加速度、３軸ジ�
 
 ```python
 # coding: utf-8
-## @package faboMPU9250
-#  This is a library for the FaBo 9AXIS I2C Brick.
-#
-#  http://fabo.io/202.html
-#
-#  Released under APACHE LICENSE, VERSION 2.0
-#
-#  http://www.apache.org/licenses/
-#
-#  FaBo <info@fabo.io>
-
 import FaBo9Axis_MPU9250
 import time
 import sys
@@ -71,23 +60,14 @@ mpu9250 = FaBo9Axis_MPU9250.MPU9250()
 
 try:
     while True:
-        accel = mpu9250.readAccel()
-        print " ax = " , ( accel['x'] )
-        print " ay = " , ( accel['y'] )
-        print " az = " , ( accel['z'] )
-
-        gyro = mpu9250.readGyro()
-        print " gx = " , ( gyro['x'] )
-        print " gy = " , ( gyro['y'] )
-        print " gz = " , ( gyro['z'] )
-
-        mag = mpu9250.readMagnet()
-        print " mx = " , ( mag['x'] )
-        print " my = " , ( mag['y'] )
-        print " mz = " , ( mag['z'] )
-        print
-
-        time.sleep(0.5)
+        a = mpu9250.readAccel()
+        g = mpu9250.readGyro()
+        m = mpu9250.readMagnet() 
+        value = (a['x'],  a['y'], a['z'], g['x'], g['y'], g['z'],m['x'],m['y'],m['z'])
+        sys.stdout.write("\rax=%f, ay=%f, az=%f, gx=%f,gy=%f,gz=%f,mx=%f,my=%f,mz=%f" % value)
+        sys.stdout.flush()
+    
+        time.sleep(0.3)
 
 except KeyboardInterrupt:
     sys.exit()
@@ -95,10 +75,11 @@ except KeyboardInterrupt:
 
 import smbusに失敗する場合はraspi-configでI2CおよびSPIを有効化してください。
 
-```
+```shell
 sudo raspi-config
-メニューから[5 Interfacing Options]>[P4 SPI]及び[P5 I2C]を選択して有効化します
 ```
+
+メニューから[7 Advanced Options]>[P5 I2C]を選択して有効化します
 
 ## 構成Parts
 - InvenSense MPU-9250
