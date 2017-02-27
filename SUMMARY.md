@@ -86,6 +86,8 @@
     * [#1503 SmartLight Kit](kit_kaden/1503_kit_smartlight.md)
     * [#1502 Matrix Plate Kit](kit_kaden/1502_kit_matrix_plate.md)
     * [#1504 RemoteController Kit](kit_kaden/1504_kit_remotecontroller.md)
+* Thirdparty
+    * [LidarLiteV2](thirdparty/lidarlite.md)
 * Case
     * [RaspberryPI](1104_case_raspberrypi.md)
     * [RaspberryPiZero](1111_case_raspberrypi_zero.md)
