@@ -29,5 +29,5 @@ static routers=192.168.111.1
 ## ネットワークの再起動
 
 ```
-$ sudo /etc/init.d/network restart
+$ sudo /etc/init.d/networking restart
 ```
