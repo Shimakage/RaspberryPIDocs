@@ -11,7 +11,7 @@ $ wget https://www.arduino.cc/download_handler.php?f=/arduino-1.8.1-linuxarm.tar
 ```
 $ tar xvf arduino-1.8.1-linuxarm.tar.xz
 $ mv  arduino-1.8.1 /usr/local
-$ cd /usr/local
+$ cd /usr/local/arduino-1.8.1
 $ sudo install.sh
 ```
 
