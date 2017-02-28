@@ -21,6 +21,7 @@
     * [ちびファイの設定](dev/pi/chibi.md)
     * [ちびファイ2の設定](dev/pi/chibi2.md)
     * [WRH-583RD2-Sの設定](dev/pi/elecom.md)
+    * [Hostdap](dev/pi/hostdap.md)
 * [FaBoについて](fabo/README.md)
     * [#502 OUT/IN Shield for Raspberry Pi](dev/pi/502_shield_outin_raspberrypi.md)
     * [#506 OUT/IN Shield for Raspberry Pi ZERO](dev/pi/506_shield_outin_raspberrypizero.md)
