@@ -95,6 +95,7 @@
     * [RaspberryPI](1104_case_raspberrypi.md)
     * [RaspberryPiZero](1111_case_raspberrypi_zero.md)
 * その他
+    * [Arduino IDEのインストール](dev/pi/arduino.md)
     * [PIとiPhoneでネットワーク構築](dev/pi/usb.md)
     * [LTEモジュール](dev/pi/lte.md)
     * [画面キャプチャーを取る](dev/pi/capture.md)
