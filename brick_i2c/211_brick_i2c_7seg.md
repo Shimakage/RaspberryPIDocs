@@ -32,7 +32,7 @@ FaBo Brickでは、初期値に0x20が設定されています。Brick裏面の�
 
 - pipからインストール
 ```
-pip install FaBo7Seg_TLC59208
+sudo pip install FaBo7Seg_TLC59208
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBo7Segment-TLC59208-Python)
 - [Library Document](http://fabo.io/doxygen/FaBo7Segment-TLC59208-Python/)
