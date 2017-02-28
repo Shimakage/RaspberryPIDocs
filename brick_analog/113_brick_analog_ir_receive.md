@@ -65,17 +65,18 @@ if __name__ == '__main__':
 GPIO4コネクタにLED、GPIO5コネクタに赤外線受信Brick、GPIO6コネクタに赤外線LEDBrickを接続
 赤外線を受信したらLEDを発光しコールバック関数を呼び、回転数を標準出力に出力する。
 ```python
+
 import RPi.GPIO as GPIO
 import time
 
 i = 0
 def callBackTest(channel):
-if GPIO.input(IR_RECEIVER_PIN):
-GPIO.output(LED_PIN, True)
-GPIO.output(LED_PIN, False)
-global i
-i += 1
-print i
+    if GPIO.input(IR_RECEIVER_PIN):
+        GPIO.output(LED_PIN, True)
+        GPIO.output(LED_PIN, False)
+        global i
+        i += 1
+        print i
 
 LED_PIN = 4
 IR_RECEIVER_PIN = 5
@@ -91,12 +92,14 @@ GPIO.setup(IR_RECEIVER_PIN, GPIO.IN, GPIO.PUD_UP)
 GPIO.add_event_detect(IR_RECEIVER_PIN, GPIO.RISING, callback=callBackTest, bouncetime=300)
 
 if __name__ == '__main__':
-try:
-while(True):
-time.sleep(0.000001)
+    try:
+        while(True):
+            GPIO.output(IR_LED_PIN, True)
+            time.sleep(0.000001)
 
-except KeyboardInterrupt:
-GPIO.cleanup()
+    except KeyboardInterrupt:
+        GPIO.output(IR_LED_PIN, False)
+        GPIO.cleanup()
 
 ```
 
