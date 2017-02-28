@@ -10,7 +10,7 @@ https://www.raspberrypi.org/downloads/
 
 ダウンロードして、解凍する。
 
-時間があかかる場合は、ミラーサイトからダウンロードする。
+時間がかかる場合は、ミラーサイトからダウンロードする。
 
 RasperryPI Zeroはステックが低いので、Liteをダウンロードする。
 

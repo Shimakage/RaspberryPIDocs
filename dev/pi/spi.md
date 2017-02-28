@@ -2,7 +2,7 @@
 
 OUT/INシールドとBrickを使う際に、SPIを有効にする必要があります。
 
-## I2Cを有効にする
+## SPIを有効にする
 
 ```shell
 $ sudo raspi-config

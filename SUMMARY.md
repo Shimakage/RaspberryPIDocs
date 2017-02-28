@@ -21,6 +21,7 @@
     * [ちびファイの設定](dev/pi/chibi.md)
     * [ちびファイ2の設定](dev/pi/chibi2.md)
     * [WRH-583RD2-Sの設定](dev/pi/elecom.md)
+    * [Hostdap](dev/pi/hostdap.md)
 * [FaBoについて](fabo/README.md)
     * [#502 OUT/IN Shield for Raspberry Pi](dev/pi/502_shield_outin_raspberrypi.md)
     * [#506 OUT/IN Shield for Raspberry Pi ZERO](dev/pi/506_shield_outin_raspberrypizero.md)
@@ -35,6 +36,8 @@
     * [Jupyterのコマンドの実行](dev/pi/jupyter_cmd.md)
 * PIP
     * [PIPについて](dev/pi/about_pip.md)
+* PWM
+    * [PWMの対応状況](dev/pi/pwm.md)
 * [Analog Brick](brick_analog/analog_brick.md)
     * [#101 LED Brick](brick_analog/101_brick_analog_led.md)
     * [#102(非対応) Buzzer Brick](brick_analog/102_brick_analog_buzzer.md)
@@ -86,6 +89,8 @@
     * [#1503 SmartLight Kit](kit_kaden/1503_kit_smartlight.md)
     * [#1502 Matrix Plate Kit](kit_kaden/1502_kit_matrix_plate.md)
     * [#1504 RemoteController Kit](kit_kaden/1504_kit_remotecontroller.md)
+* Thirdparty
+    * [LidarLiteV2](thirdparty/lidarlite.md)
 * Case
     * [RaspberryPI](1104_case_raspberrypi.md)
     * [RaspberryPiZero](1111_case_raspberrypi_zero.md)
