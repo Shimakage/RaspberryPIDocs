@@ -35,7 +35,7 @@
     * [Jupyterの標準出力](dev/pi/jupyter_print.md)
     * [Jupyterのコマンドの実行](dev/pi/jupyter_cmd.md)
 * PIP
-    * [PIPについて](dev/pi/about_pip.md)
+    * [PIPについて](dev/pi/pip.md)
 * PWM
     * [PWMの対応状況](dev/pi/pwm.md)
 * [Analog Brick](brick_analog/analog_brick.md)
