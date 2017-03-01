@@ -128,7 +128,7 @@ net.ipv4.ip_forward=1
 iptables-restore < /etc/iptables.ipv4.nat
 ```
 
-### デイモンの実行
+### iptableへの追加
 
 その後、以下のコマンドを実行してください。
 
