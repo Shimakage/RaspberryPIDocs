@@ -12,7 +12,7 @@ RGB Color LEDをRing状に12個配置したBrickです。
 ### Arduino
 ![](/img/400_led/connect/402_ledring_connect.jpg)
 ### Raspberry Pi
-![](/img/400_led/connect/402_connect_with_rasppi.jpg)
+![](/img/400_led/connect/402_connect_with_rasppi2.jpg)
 
 ## Support
 |Arduino|RaspberryPI|
