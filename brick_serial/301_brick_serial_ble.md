@@ -17,6 +17,9 @@ Serialコネクタは、Arduino用、RaspberryPI用、Ichigojam用のOUT/INシ�
 ![](/img/300_serial/connect/301_ble_connect.jpg)
 写真はArduinoの接続例です。
 
+![](/img/300_serial/connect/301_connect_with_rasppi.jpg)
+写真はRaspberry Piの接続例です。
+
 ## Support
 |Arduino|RaspberryPI|IchigoJam|
 |:--:|:--:|:--:|

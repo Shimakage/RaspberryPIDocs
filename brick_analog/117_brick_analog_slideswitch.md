@@ -14,6 +14,9 @@ GPIOコネクタのいずれかに接続します。
 ### IchigoJam
 OUTコネクタのいずれかに接続します。
 
+### Raspberry Pi
+![](/img/100_analog/connect/117_connect_with_rasppi.jpg)
+
 ## Schematic
 
 ## Sample Code

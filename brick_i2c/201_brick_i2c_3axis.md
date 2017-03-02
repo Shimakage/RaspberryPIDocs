@@ -26,6 +26,12 @@ I2Cで3軸の加速度データを取得することがきます。
 
 写真はArduinoでの接続例です。
 
+![](/img/200_i2c/connect/201_connect_with_rasppi.jpg)
+
+写真はRaspberry Piの接続例です。
+
+
+
 ## ADXL345 Datasheet
 | Document |
 |:--|

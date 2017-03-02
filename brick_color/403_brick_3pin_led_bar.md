@@ -9,7 +9,10 @@ RGB Color LEDをBar状に5個配置したBrickです。
 ## Connecting
 アナログコネクタ(A0〜A5)、またはデジタルコネクタ(2〜13)のどれかに接続します。
 
+### Arduino
 ![](/img/400_led/connect/403_ledbar_connect.jpg)
+### Raspberry Pi
+![](/img/400_led/connect/403_connect_with_rasppi.jpg)
 
 ## Support
 |Arduino|RaspberryPI|

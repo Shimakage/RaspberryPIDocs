@@ -10,8 +10,12 @@
 ### Arduino
 アナログコネクタ(A0〜A5)のいずれかに接続します。
 
+### Raspberr Pi
+![](/img/100_analog/connect/114_connect_with_rasppi.jpg)
+
 ### IchigoJam
 アナログ用コネクタ(IN2またはANA()で設定したコネクタ)のどれかに接続します。
+
 
 ## Support
 |Arduino|IchigoJam|

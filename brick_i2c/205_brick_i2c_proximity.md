@@ -11,8 +11,10 @@ I2Cでデータを取得できます。
 ## Connecting
 I2Cコネクタへ接続します。
 
+### Arduino
 ![](/img/200_i2c/connect/205_proximity_connect.jpg)
-
+### Raspberry Pi
+![](/img/200_i2c/connect/205_connect_with_rasppi.jpg)
 
 ## VCNL4010 Datasheet
 | Document |

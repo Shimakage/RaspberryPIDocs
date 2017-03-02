@@ -10,7 +10,10 @@ I2Cでデータを取得できます。
 ## Connecting
 I2Cコネクタへ接続します。
 
+###Arduino
 ![](/img/200_i2c/connect/215_rtc_connect.jpg)
+### Raspberry Pi
+![](/img/200_i2c/connect/215_connect_with_rasppi.jpg)
 
 ## PCF2129 Datasheet
 | Document |

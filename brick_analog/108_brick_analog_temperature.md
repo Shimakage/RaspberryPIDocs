@@ -10,6 +10,11 @@
 ## Connecting
 
 アナログコネクタ(A0〜A7)のいずれかに接続します。
+### Arduino
+![](/img/100_analog/connect/108_temperature_connect.jpg)
+
+### Raspberr Pi
+![](/img/100_analog/connect/104_connect_with_rasppi.jpg)
 
 ## LM61CIZ Datasheet
 | Document |
