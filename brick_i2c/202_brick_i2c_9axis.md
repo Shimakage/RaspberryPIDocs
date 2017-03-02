@@ -93,6 +93,41 @@ except KeyboardInterrupt:
 sys.exit()
 ```
 
+```python
+configMPU9250(gfs,afs)
+```  
+でデータの取得できる範囲を変更できます  
+
+gfs   : 限界(dps)  
+0x00 -> ±250  
+0x01 -> ±500  
+0x02 -> ±1000  
+0x03 -> ±2000  
+
+afs   : 限界(g)  
+0x00 -> ±2    
+0x01 -> ±4  
+0x02 -> ±8  
+0x03 -> ±16  
+
+
+```python
+mpu9250.configMPU9250(0x00,0x00)
+```
+![](/img/200_i2c/graph/AFS2.png)
+```python
+mpu9250.configMPU9250(0x00,0x01)
+```
+![](/img/200_i2c/graph/AFS4.png)
+```python
+mpu9250.configMPU9250(0x00,0x02)
+```
+![](/img/200_i2c/graph/AFS8.png)
+```python
+mpu9250.configMPU9250(0x00,0x03)
+```
+![](/img/200_i2c/graph/AFS16.png)
+
 ボタンが押された時の前後0.5秒間のデータをグラフにして出力します。
 ```python
 #coding: utf-8
