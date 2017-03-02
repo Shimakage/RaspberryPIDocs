@@ -14,7 +14,10 @@ BLEの転送レートは115200bpsに設定してあります。
 ## Connecting
 Serialコネクタへ接続します。
 
+### Arduino
 ![](/img/300_serial/connect/307_ble_nordic_connect.jpg)
+### Raspberry Pi
+![](/img/300_serial/connect/307_connect_with_rasppi.jpg)
 
 ## Support
 |Arduino|RaspberryPI|

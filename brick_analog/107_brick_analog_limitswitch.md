@@ -13,6 +13,11 @@ I/OピンよりスイッチのON/OFFの状態を取得することができま�
 ## Connecting
 
 GPIOコネクタのいずれかに接続します。
+### Raspberry Pi
+![](/img/100_analog/connect/107_connect_with_rasppi.jpg)
+
+### Arduino
+![](/img/100_analog/connect/107_limitswitch_connect.jpg)
 
 ## Schematic
 ![](/img/100_analog/schematic/107_limitswitch.png)

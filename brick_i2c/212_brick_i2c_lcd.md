@@ -11,8 +11,10 @@ I2Cで表示データを制御できます。
 ## Connecting
 I2Cコネクタへ接続します。
 
+### Arduino
 ![](/img/200_i2c/connect/212_lcd_connect.jpg)
-
+### Raspberry Pi
+![](/img/200_i2c/connect/212_connect_with_rasppi.jpg)
 
 ## PCF8574 Datasheet
 | Document |

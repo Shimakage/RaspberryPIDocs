@@ -11,7 +11,11 @@ PCやスマートフォンなどの端末とシリアル通信することがで
 ## Connecting
 Serialコネクタへ接続します。
 
+### Arduino
 ![](/img/300_serial/connect/302_bluetooth_connect.jpg)
+### Raspberry Pi
+![](/img/300_serial/connect/302_connect_with_rasppi.jpg)
+
 
 ## Support
 |Arduino|RaspberryPI|IchigoJam|

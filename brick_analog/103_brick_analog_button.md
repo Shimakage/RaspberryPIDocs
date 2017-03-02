@@ -12,6 +12,12 @@
 
 GPIOコネクタのいずれかに接続します。
 
+### Raspberr Pi
+![](/img/100_analog/connect103_connect_with_rasppi.jpg)
+
+### Arduino
+![](/img/100_analog/103_button_connect.jpg)
+
 ## Schematic
 ![](/img/100_analog/schematic/103_button.png)
 

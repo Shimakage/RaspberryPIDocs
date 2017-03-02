@@ -11,8 +11,10 @@ I2Cで表示パターンを制御できます。
 ## Connecting
 I2Cコネクタへ接続します。
 
+### Arduino
 <center>![](/img/200_i2c/connect/211_7seg_connect.jpg)
-
+### Raspberry Pi
+![](/img/200_i2c/connect/211_connect_with_rasppi.jpg)
 ## TLC59208F Datasheet
 | Document |
 | -- |

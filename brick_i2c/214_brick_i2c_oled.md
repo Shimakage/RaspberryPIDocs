@@ -11,7 +11,10 @@ I2Cで表示データを制御できます。
 ## Connecting
 I2Cコネクタへ接続します。
 
+### Arduino
 ![](/img/200_i2c/connect/214_oled_connect.jpg)
+### Raspberry Pi
+![](/img/200_i2c/connect/214_connect_with_rasppi.jpg)
 
 ## ER-OLED0.96 Datasheet
 | Document |

@@ -12,6 +12,8 @@ I/Oピンから赤外線LEDをON/OFFを制御することができます。
 
 OUTコネクタのいずれかに接続します。
 
+### Raspberry Pi
+![](/img/100_analog/connect/112_connect_with_rasppi.jpg)
 
 ## Parts Specification
 | Document |

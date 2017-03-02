@@ -11,6 +11,9 @@ I/Oピンから赤外線受信のON/OFFを取得することができます。
 ## Connecting
 GPIOコネクタに接続します。
 
+### Raspberry PI
+![](/img/100_analog/connect/113_connect_with_rasppi.jpg)
+
 ## Support
 |Arduino|RaspberryPI|IchigoJam|
 |:--:|:--:|:--:|

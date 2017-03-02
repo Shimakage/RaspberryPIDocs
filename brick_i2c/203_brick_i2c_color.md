@@ -11,7 +11,11 @@
 ## Connecting
 I2Cコネクタへ接続します。
 
+### Arduino
 ![](/img/200_i2c/connect/203_color_connect.jpg)
+
+### Raspberry Pi
+![](/img/200_i2c/connect/203_connect_with_rasppi.jpg)
 
 ## S11059 Datasheet
 | Document |

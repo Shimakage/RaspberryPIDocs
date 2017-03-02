@@ -11,6 +11,12 @@ LEDのBrickです。発光色は5色（青・緑・赤・白・黄）ありま�
 ## Connecting
 
 GPIOコネクタのいずれかに接続します。
+### Raspberry Pi
+![](/img/100_analog/connect/101_connect_with_rasppi.jpg)
+
+### Arudio
+![](/img/100_analog/connect/101_led_connect.jpg.jpg)
+
 
 ## Schematic
 ![](/img/100_analog/schematic/101_led.png)

@@ -9,7 +9,11 @@ FT232RLを使用した、USBシリアル通信ができるBrickです。
 ## Connecting
 Serialコネクタへ接続し、MicroUSBコネクタを他のデバイスに接続します。
 
+### Arduino
 ![](/img/300_serial/connect/304_usbserial_connect.jpg)
+### Raspberry Pi
+![](/img/300_serial/connect/304_connect_with_rasppi.jpg)
+
 
 ## Support
 |Arduino|RaspberryPI|IchigoJam|NRF51|

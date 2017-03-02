@@ -16,6 +16,9 @@ LED Brickを点灯/消灯させる際などに使用します。
 ## Connecting
 GPIOコネクタのいずれかに接続します。
 
+### Raspebrry Pi
+![](/img/100_analog/connect/110_connect_with_rasppi.jpg)
+
 ### IchigoJam
 OUTコネクタのいずれかに接続します。
 
