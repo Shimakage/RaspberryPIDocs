@@ -8,10 +8,13 @@
 I/Oピンより、感圧部分に加えられた力の大きさの変化をアナログ値で取得することができます。
 
 ## Connecting
+アナログコネクタ(A0〜A7)のいずれかに接続します。
 
 ### Arduino
+![](/img/100_analog/connect/106_touch_connect.jpg)
+### Raspberr Pi
+![](/img/100_analog/connect/104_connect_with_rasppi.jpg)
 
-アナログコネクタ(A0〜A7)のいずれかに接続します。
 
 ## Datasheet
 | Document |

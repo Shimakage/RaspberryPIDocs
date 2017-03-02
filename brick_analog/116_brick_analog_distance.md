@@ -13,6 +13,8 @@ I/Oピンより距離センサーの正面についているレンズから物�
 ## Connecting
 
 アナログコネクタ(A0〜A7)のいずれかに接続します。
+### Raspberr Pi
+![](/img/100_analog/connect/116_connect_with_rasppi.jpg)
 
 
 ## GP2Y0A21YK Datasheet

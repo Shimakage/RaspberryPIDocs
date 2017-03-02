@@ -14,7 +14,7 @@ LED Brickの明るさを調節する際などに使用します。
 
 アナログコネクタ(A0〜A7)のいずれかに接続します。
 
-### Raspberry Pi
+### Raspberr Pi
 ![](/img/100_analog/connect/104_connect_with_rasppi.jpg)
 
 ### Arduino

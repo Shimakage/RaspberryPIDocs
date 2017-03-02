@@ -11,6 +11,12 @@ CDSセルを使用した光センサーBrickです。
 ## Connecting
 
 アナログコネクタ(A0〜A7)のいずれかに接続します。
+### Arduino
+![](/img/100_analog/connect/109_ambientlight_connect.jpg)
+
+### Raspberr Pi
+![](/img/100_analog/connect/104_connect_with_rasppi.jpg)
+
 
 ### IchigoJam
 アナログ用コネクタ(IN2またはANA()で設定したコネクタ)のどれかに接続します。
