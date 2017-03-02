@@ -42,7 +42,7 @@ MPU-9250は、三軸加速度、ジャイロ用とコンパス用の2つのI2C S
 
 - pipからインストール
 ```
-$ sudo pip install FaBo9Axis_MPU9250
+pip install FaBo9Axis_MPU9250
 ```
 - [Library GitHub](https://github.com/FaBoPlatform/FaBo9AXIS-MPU9250-Python)
 - [Library Document](http://fabo.io/doxygen/FaBo9AXIS-MPU9250-Python/)
@@ -55,6 +55,17 @@ I2Cコネクタに接続した9Axis I2C Brickより３軸加速度、３軸ジ�
 
 ```python
 # coding: utf-8
+## @package faboMPU9250
+#  This is a library for the FaBo 9AXIS I2C Brick.
+#
+#  http://fabo.io/202.html
+#
+#  Released under APACHE LICENSE, VERSION 2.0
+#
+#  http://www.apache.org/licenses/
+#
+#  FaBo <info@fabo.io>
+
 import FaBo9Axis_MPU9250
 import time
 import sys
@@ -62,27 +73,84 @@ import sys
 mpu9250 = FaBo9Axis_MPU9250.MPU9250()
 
 try:
-    while True:
-        a = mpu9250.readAccel()
-        g = mpu9250.readGyro()
-        m = mpu9250.readMagnet() 
-        value = (a['x'],  a['y'], a['z'], g['x'], g['y'], g['z'],m['x'],m['y'],m['z'])
-        sys.stdout.write("\rax=%f, ay=%f, az=%f, gx=%f,gy=%f,gz=%f,mx=%f,my=%f,mz=%f" % value)
-        sys.stdout.flush()
-    
-        time.sleep(0.3)
+while True:
+accel = mpu9250.readAccel()
+print " ax = " , ( accel['x'] )
+print " ay = " , ( accel['y'] )
+print " az = " , ( accel['z'] )
+
+gyro = mpu9250.readGyro()
+print " gx = " , ( gyro['x'] )
+print " gy = " , ( gyro['y'] )
+print " gz = " , ( gyro['z'] )
+
+mag = mpu9250.readMagnet()
+print " mx = " , ( mag['x'] )
+print " my = " , ( mag['y'] )
+print " mz = " , ( mag['z'] )
+print
+
+time.sleep(0.5)
 
 except KeyboardInterrupt:
-    sys.exit()
+sys.exit()
 ```
 
-import smbusに失敗する場合はraspi-configでI2CおよびSPIを有効化してください。
+ボタンが押された時の前後0.5秒間のデータをグラフにして出力します。
+```python
+#coding: utf-8
+import matplotlib.pyplot as plt
+import numpy as np
+import FaBo9Axis_MPU9250
+import time
+import sys
+import RPi.GPIO as GPIO
+%matplotlib inline
 
-```shell
-sudo raspi-config
+mpu9250 = FaBo9Axis_MPU9250.MPU9250()
+i=0
+t=0
+co=0
+value=[]
+data=[]
+title=["Accel x","Accel y","Accel z","Gyro x","Gyro y","Gyro z","Magnet x","Magnet y","Magnet z"]
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(5,GPIO.IN)
+
+def plotgr():
+array = np.array(data)
+for j in range(0,9):
+plt.subplot(3,3,j+1)
+plt.title(title[j])
+plt.plot(array[:,j])
+plt.tight_layout()
+plt.show()
+
+try:
+while True:
+t+=1
+if co>0:
+co+=1
+a = mpu9250.readAccel()
+g = mpu9250.readGyro()
+m = mpu9250.readMagnet()
+value=(a['x'],a['y'],a['z'],g['x'],g['y'],g['z'],m['x'],m['y'],m['z'])
+data.append(value)
+if len(data)==12:
+del data[0]
+if GPIO.input(5):
+if co==0 :
+co=1
+if co==6:
+co=0
+plotgr()
+time.sleep(0.1)
+
+except KeyboardInterrupt:
+sys.exit()
+
 ```
-
-メニューから[7 Advanced Options]>[P5 I2C]を選択して有効化します
 
 ## 構成Parts
 - InvenSense MPU-9250
