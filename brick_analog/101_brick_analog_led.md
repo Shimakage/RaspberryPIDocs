@@ -15,7 +15,7 @@ GPIOコネクタのいずれかに接続します。
 ![](/img/100_analog/connect/101_connect_with_rasppi.jpg)
 
 ### Arudio
-![](/img/100_analog/connect/101_led_connect.jpg.jpg)
+![](/img/100_analog/connect/101_led_connect.jpg)
 
 
 ## Schematic
