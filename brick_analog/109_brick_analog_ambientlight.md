@@ -15,7 +15,7 @@ CDSセルを使用した光センサーBrickです。
 ![](/img/100_analog/connect/109_ambientlight_connect.jpg)
 
 ### Raspberr Pi
-![](/img/100_analog/connect/104_connect_with_rasppi.jpg)
+![](/img/100_analog/connect/109_connect_with_rasppi.jpg)
 
 
 ### IchigoJam
