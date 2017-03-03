@@ -84,6 +84,8 @@
     * [#402 Color LED Ring Brick](brick_color/402_brick_3pin_led_circle.md)
     * [#403 Color LED Bar Brick](brick_color/403_brick_3pin_led_bar.md)
     * [#404 Color LED Matrix Brick](brick_color/404_brick_3pin_led_matrix.md)
+* Motor
+    * [Motor](motor/motor.md)
 * Kaden
     * [#1501 Propeller Kit](kit_kaden/1501_kit_propeller.md)
     * [#1503 SmartLight Kit](kit_kaden/1503_kit_smartlight.md)
