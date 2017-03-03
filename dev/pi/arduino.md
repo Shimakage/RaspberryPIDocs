@@ -15,6 +15,14 @@ $ cd /usr/local/arduino-1.8.1
 $ sudo ./install.sh
 ```
 
-## 実行
+## シンボリックリンク作成
 
-[RasPI]-[Electronics]-[Arduino]
+```
+$ cd /usr/bin
+$ ln -s /usr/local/arduino-1.8.1/arduino
+$ cd ~/
+```
+## 実行
+```
+$ arduino
+```
