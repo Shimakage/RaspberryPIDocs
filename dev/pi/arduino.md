@@ -3,16 +3,16 @@
 ## Arduino IDEの取得
 
 ```
-$ wget https://www.arduino.cc/download_handler.php?f=/arduino-1.8.1-linuxarm.tar.xz
+$ wget http://downloads.arduino.cc/arduino-1.8.1-linuxarm.tar.xz
 ```
 
 ## Arduino IDEの解凍
 
 ```
 $ tar xvf arduino-1.8.1-linuxarm.tar.xz
-$ mv  arduino-1.8.1 /usr/local
+$ sudo mv  arduino-1.8.1 /usr/local
 $ cd /usr/local/arduino-1.8.1
-$ sudo install.sh
+$ sudo ./install.sh
 ```
 
 ## 実行
