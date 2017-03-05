@@ -40,7 +40,31 @@ Stall(停動電流)
 |344.2:1|38rpm|2276 gf・com|
 
 ## I2Cプログラム
+```python
+import smbus
+import time
+bus = smbus.SMBus(1)
+forward_val = 0x02
+#変速
+for i in range(0x06,0x40,1):
+    val = forward_val | (i << 2)
+    bus.write_i2c_block_data(0xc8>>1,0x00,[val])
+    if i % 10 == 0:
+        print i
+    time.sleep(.1)
+        
+for i in range(0x3F,0x05,-1):
+    val = forward_val | (i << 2)
+    bus.write_i2c_block_data(0xc8>>1,0x00,[val])
+    if i % 10 == 0:
+        print i
+    time.sleep(.1)
+#停止
+bus.write_i2c_block_data(0xc8>>1,0x00,[0x04])
+bus.write_i2c_block_data(0xc8>>1,0x00,[0x07])
 
+bus.close()
+```
 ```python
 import smbus
 import time
@@ -75,13 +99,13 @@ def brake():
     bus.write_i2c_block_data(0x64,0x00,[sval])
 
 def getspeed():
-    rd = bus.read_word_data(0x64,[0x00])
+    rd = bus.read_word_data(0x64,0x00)
     #スピードを0~59の範囲で取り出す
     speed = (rd >> 2)-6
     return speed
 
 def setspeed(speed):
-    rd = bus.read_word_data(0x64,[0x00])
+    rd = bus.read_word_data(0x64,0x00)
     cmd = (rd & 0x03)
     sval = cmd | ((speed+6)<<2)
     bus.write_i2c_block_data(0x64,0x00,[sval])
