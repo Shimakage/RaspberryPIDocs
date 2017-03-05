@@ -8,6 +8,7 @@
     * [ネットワーク設定(Pixel)](dev/pi/wifi_pixel.md)
     * [パッケージのUpdate](dev/pi/update.md)
     * [SSHを有効にする](dev/pi/ssh.md)
+    * [電力に関して](dev/pi/power.md)
 * RaspberryPI Zero
     * [RSAPBIAN Liteのインストール](/dev/pi/install_lite.md)
     * [ログイン](dev/pi/login.md)
@@ -15,6 +16,7 @@
     * [ネットワーク設定(lite)](dev/pi/wifi_lite.md)
     * [パッケージのUpdate](dev/pi/update.md)
     * [SSHを有効にする](dev/pi/ssh.md)
+    * [電力に関して](dev/pi/power.md)
 * Jupyerデバイス化
     * [Jupyterのインストール](dev/pi/jupyter.md)
     * [Wifi Routerを接続](dev/pi/router.md)
