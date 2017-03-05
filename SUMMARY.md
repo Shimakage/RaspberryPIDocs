@@ -93,6 +93,9 @@
     * [#1503 SmartLight Kit](kit_kaden/1503_kit_smartlight.md)
     * [#1502 Matrix Plate Kit](kit_kaden/1502_kit_matrix_plate.md)
     * [#1504 RemoteController Kit](kit_kaden/1504_kit_remotecontroller.md)
+* 拡張ハードウェア
+    * [Cameraの接続](dev/pi/camera.md)
+    * [Displayの接続](dev/pi/display.md)
 * Thirdparty
     * [LidarLiteV2](thirdparty/lidarlite.md)
 * Case
