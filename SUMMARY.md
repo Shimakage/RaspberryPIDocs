@@ -42,7 +42,7 @@
     * [PIPについて](dev/pi/pip.md)
 * PWM
     * [PWMの対応状況](dev/pi/pwm.md)
-* [Analog Brick](brick_analog/AnalogBrick.ipynb)
+* [Analog Brick](https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/brick_analog/AnalogBrick.ipynb)
     * [#101 LED Brick](brick_analog/101_brick_analog_led.md)
     * [#102(非対応) Buzzer Brick](brick_analog/102_brick_analog_buzzer.md)
     * [#103 Button Brick](brick_analog/103_brick_analog_button.md)
