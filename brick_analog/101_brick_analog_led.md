@@ -29,6 +29,7 @@ GPIO4コネクタにLED Brickを接続し、一定時間ごとに点灯/消灯�
 # coding: utf-8
 import RPi.GPIO as GPIO
 import time
+import sys
 
 LEDPIN = 4
 
@@ -36,16 +37,15 @@ GPIO.setwarnings(False)
 GPIO.setmode( GPIO.BCM )
 GPIO.setup( LEDPIN, GPIO.OUT )
 
-if __name__ == '__main__':
-	try:
-		while True:
-			GPIO.output( LEDPIN, True )
-			time.sleep( 1.0 )
-			GPIO.output( LEDPIN, False )
-			time.sleep( 1.0 ) 
-	except KeyboardInterrupt:
-    	GPIO.cleanup()
-    	sys.exit(0)
+try:
+	while True:
+		GPIO.output( LEDPIN, True )
+		time.sleep( 1.0 )
+		GPIO.output( LEDPIN, False )
+		time.sleep( 1.0 ) 
+except KeyboardInterrupt:
+	GPIO.cleanup()
+	sys.exit(0)
 ```
 
 PWMによる転送をおこないます。
@@ -54,6 +54,7 @@ PWMによる転送をおこないます。
 # coding: utf-8
 import RPi.GPIO as GPIO
 import time
+import sys
 
 LEDPIN = 4
 
@@ -63,15 +64,14 @@ GPIO.setup( LEDPIN, GPIO.OUT )
 LED = GPIO.PWM(LEDPIN, 100)
 value = 0
 
-if __name__ == '__main__':
-	try:
-		while True:
-		LED.ChangeDutyCycle(value % 100)
-		time.sleep(0.01)
-		value += 1
-	except KeyboardInterrupt:
-    	GPIO.cleanup()
-    	sys.exit(0)
+try:
+	while True:
+	LED.ChangeDutyCycle(value % 100)
+	time.sleep(0.01)
+	value += 1
+except KeyboardInterrupt:
+	GPIO.cleanup()
+	sys.exit(0)
 ```
 
 ## 構成Parts

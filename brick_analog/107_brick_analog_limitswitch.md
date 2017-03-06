@@ -28,12 +28,6 @@ GPIO5コネクタにLimitSwitch Brickを接続し、GPIO4コネクタに接続�
 
 ```python
 # coding: utf-8
-#
-# FaBo Brick Sample
-#
-# brick_analog_limitswitch
-#
-
 import RPi.GPIO as GPIO
 import time
 
@@ -47,12 +41,16 @@ GPIO.setmode( GPIO.BCM )
 GPIO.setup( LEDPIN, GPIO.OUT )
 GPIO.setup( LSPIN, GPIO.IN)
 
-while True:
-    if( GPIO.input( LSPIN ) ):
-         led_state = 1 - led_state
-    GPIO.output( LEDPIN, led_state )
-    print "led_state: %d " % led_state
-    time.sleep(0.2)
+try:
+	while True:
+    	if( GPIO.input( LSPIN ) ):
+        	led_state = 1 - led_state
+    		GPIO.output( LEDPIN, led_state )
+    		print "led_state: %d " % led_state
+    		time.sleep(0.2)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    sys.exit(0)
 ```
 
 ## 構成Parts

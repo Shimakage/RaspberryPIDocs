@@ -40,19 +40,6 @@ ANGLEPIN = 0
 # GPIO4コネクタにLEDを接続
 LEDPIN = 4
 
-# GPIOポートを設定
-GPIO.setwarnings(False)
-GPIO.setmode( GPIO.BCM )
-GPIO.setup( LEDPIN, GPIO.OUT )
-
-# PWM/100Hzに設定
-LED = GPIO.PWM(LEDPIN, 100)
-
-# 初期化
-LED.start(0)
-spi = spidev.SpiDev()
-spi.open(0,0)
-
 #######################################################################
 def readadc(channel):
 	"""
@@ -76,20 +63,30 @@ def map(x, in_min, in_max, out_min, out_max):
 	"""
 	return (x - in_min) * (out_max - out_min) // (in_max - in_min) + out_min
 
+# GPIOポートを設定
+GPIO.setmode( GPIO.BCM )
+GPIO.setup( LEDPIN, GPIO.OUT )
 
-if __name__ == '__main__':
-	try:
-		while True:
-			data = readadc(ANGLEPIN)
-			print("adc : {:8} ".format(data))
-			value = map(data, 0, 1023, 0, 100)
-			LED.ChangeDutyCycle(value)
-			time.sleep( 0.01 )
-	except KeyboardInterrupt:
-		LED.stop()
-		GPIO.cleanup()
-		spi.close()
-		sys.exit(0)
+# PWM/100Hzに設定
+LED = GPIO.PWM(LEDPIN, 100)
+
+# 初期化
+LED.start(0)
+spi = spidev.SpiDev()
+spi.open(0,0)
+
+try:
+	while True:
+		data = readadc(ANGLEPIN)
+		print("adc : {:8} ".format(data))
+		value = map(data, 0, 1023, 0, 100)
+		LED.ChangeDutyCycle(value)
+		time.sleep( 0.01 )
+except KeyboardInterrupt:
+	LED.stop()
+	GPIO.cleanup()
+	spi.close()
+	sys.exit(0)
 ```
 
 ## 構成Parts

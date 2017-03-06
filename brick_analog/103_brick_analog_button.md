@@ -29,28 +29,27 @@ GPIO5コネクタに接続したButton Brickの入力により、GPIO4コネク�
 ```python
 # coding: utf-8
 import RPi.GPIO as GPIO
+import sys
 
 LEDPIN = 4
 BUTTONPIN = 5
 
-GPIO.setwarnings(False)
-GPIO.setmode( GPIO.BCM )
-GPIO.setup( LEDPIN, GPIO.OUT )
-GPIO.setup( BUTTONPIN, GPIO.IN )
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LEDPIN, GPIO.OUT)
+GPIO.setup(BUTTONPIN, GPIO.IN)
 
-if __name__ == '__main__':
-	try:
-   		while True:
-    	# ボタン押下判定
-		if( GPIO.input( BUTTONPIN ) ):
-	    	# LED点灯
-        	GPIO.output( LEDPIN, True )
+try:
+	while True:
+		# ボタン押下判定
+		if( GPIO.input(BUTTONPIN)):
+			# LED点灯
+			GPIO.output(LEDPIN, True)
 		else:
-	    	# LED消灯
-			GPIO.output( LEDPIN, False )
-	except KeyboardInterrupt:
-    	GPIO.cleanup()
-    	sys.exit(0)
+			# LED消灯
+			GPIO.output(LEDPIN, False)
+except KeyboardInterrupt:
+	GPIO.cleanup()
+	sys.exit(0)
 ```
 
 
