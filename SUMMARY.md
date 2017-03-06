@@ -109,4 +109,5 @@
     * [LTEモジュール](dev/pi/lte.md)
     * [画面キャプチャーを取る](dev/pi/capture.md)
     * [SDカードのクローンを作成](dev/pi/clone.md)
+    * [回転数の取得](measure_rot/measure.md)
  
