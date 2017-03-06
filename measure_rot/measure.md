@@ -66,15 +66,15 @@ if __name__ == '__main__':
 モータに取り付けた以下のような色付きの円盤を利用し、その色の明暗により回転数の取得をする。
 
 <!-- ![Disk](/rot/Disk.png) -->
-<img src="/rot/Disk.png" alt="" width="50%" height="50%">
+<img src="/img/rot/Disk.png" alt="" width="50%" height="50%">
 
 測定したグラフは以下のようになっている
 
-![LowSpeedGraph](/rot/LowSpeedGraph.png)
+![LowSpeedGraph](/img/rot/LowSpeedGraph.png)
 
 なお、実際の回転数測定に用いたグラフは以下である
 
-![HighSpeedGraph](/rot/HighSpeedGraph.png)
+![HighSpeedGraph](/img/rot/HighSpeedGraph.png)
 
 円盤の明暗の規則性を利用し、変数`fl`を三段階のステージにわけることで`fl==0`の際に変数`co`に回転数をカウントさせる
 
@@ -124,8 +124,8 @@ if __name__ == '__main__':
 
 以下は装置の図と写真である
 
-![HALLSensor2.png](/rot/HALLSensor2.png)
-![HALLSensor1.jpg](/rot/HALLSensor1.jpg)
+![HALLSensor2.png](/img/rot/HALLSensor2.png)
+![HALLSensor1.jpg](/img/rot/HALLSensor1.jpg)
 
 なお、この方法ではセンサの反応しうる距離に磁石を置いており多少の誤差はあれど測定した回転数は実際に使う上での許容範囲にはなっている。
 
