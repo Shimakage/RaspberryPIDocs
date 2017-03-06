@@ -33,7 +33,7 @@ Stall(停動電流)
 タミヤ ダブルギヤボックス （左右独立4速タイプ) 70168
 
 |ギア比|回転数|回転トルク|
-|:--|:--|
+|:--|:--|:--|
 |12.7:1|1039rpm|94 gf・cm|
 |38.2:1|345rpm|278 gf・cm|
 |114.7:1|115rpm|809 gf・cm|
@@ -43,87 +43,84 @@ Stall(停動電流)
 ```python
 import smbus
 import time
-bus = smbus.SMBus(1)
-forward_val = 0x02
-#変速
-for i in range(0x06,0x40,1):
-    val = forward_val | (i << 2)
-    bus.write_i2c_block_data(0xc8>>1,0x00,[val])
-    if i % 10 == 0:
-        print i
-    time.sleep(.1)
-        
-for i in range(0x3F,0x05,-1):
-    val = forward_val | (i << 2)
-    bus.write_i2c_block_data(0xc8>>1,0x00,[val])
-    if i % 10 == 0:
-        print i
-    time.sleep(.1)
-#停止
-bus.write_i2c_block_data(0xc8>>1,0x00,[0x04])
-bus.write_i2c_block_data(0xc8>>1,0x00,[0x07])
+import sys
 
-bus.close()
-```
-```python
-import smbus
-import time
 bus = smbus.SMBus(1)
-forward_val = 0x02
 
-def forward():
-    speed = getspeed()
+#スピードは1~58(0x3A)の範囲で指定
+def forward(speed):
     cmd = 0x01
-    sval = cmd | ((speed+6)<<2)
-    stop()
+    sval = cmd | ((speed+5)<<2)
     bus.write_i2c_block_data(0x64,0x00,[sval])
 
-def back():
-    speed = getspeed()
+def back(speed):
     cmd = 0x02
-    sval = cmd | ((speed+6)<<2)
-    stop()
+    sval = cmd | ((speed+5)<<2)
     bus.write_i2c_block_data(0x64,0x00,[sval])
 
 def stop():
-    speed = getspeed()
-    cmd = 0x00
-    sval = cmd | ((speed+6)<<2)
-    bus.write_i2c_block_data(0x64,0x00,[sval])
+    bus.write_i2c_block_data(0x64,0x00,[0x00])
 
 def brake():
-    speed = getspeed()
-    cmd = 0x03
-    sval = cmd | ((speed+6)<<2)
-    stop()
-    bus.write_i2c_block_data(0x64,0x00,[sval])
+    bus.write_i2c_block_data(0x64,0x00,[0x03])
 
+#スピードを1~58(0x3A)の範囲で取り出す
 def getspeed():
     rd = bus.read_word_data(0x64,0x00)
-    #スピードを0~59の範囲で取り出す
-    speed = (rd >> 2)-6
+    speed = (rd >> 2)-5
     return speed
 
-def setspeed(speed):
-    rd = bus.read_word_data(0x64,0x00)
-    cmd = (rd & 0x03)
-    sval = cmd | ((speed+6)<<2)
-    bus.write_i2c_block_data(0x64,0x00,[sval])
+if __name__ == '__main__':
+    try:
+        for i in range(0x01,0x3A,1):
+            forward(i)
+            time.sleep(0.1)
 
-setspeed(0)
-forward()
+        for i in range(0x3A,0x00,-1):
+            forward(i)
+            time.sleep(0.1)
 
-for i in range(0x00,0x5A,1):
-    setspeed(i)
-    time.sleep(0.1)
-        
-for i in range(0x59,-0x01,-1):
-    setspeed(i)
-    time.sleep(0.1)
+        for i in range(0x00,0x3A,1):
+            back(i)
+            time.sleep(0.1)
 
-stop()
-brake()
+        for i in range(0x3A,0x00,-1):
+            back(i)
+            time.sleep(0.1)
 
-bus.close()
+        stop()
+        brake()
+        bus.close()
+    except KeyboardInterrupt:
+        stop()
+        bus.close()
+        sys.exit(0)
 ```
+
+<!--```python-->
+<!--import smbus-->
+<!--import time-->
+<!--bus = smbus.SMBus(1)-->
+<!--forward_val = 0x02-->
+<!--#変速-->
+<!--for i in range(0x06,0x40,1):-->
+<!--val = forward_val | (i << 2)-->
+<!--bus.write_i2c_block_data(0xc8>>1,0x00,[val])-->
+<!--if i % 10 == 0:-->
+<!--print i-->
+<!--time.sleep(.1)-->
+<!---->
+<!--for i in range(0x3F,0x05,-1):-->
+<!--val = forward_val | (i << 2)-->
+<!--bus.write_i2c_block_data(0xc8>>1,0x00,[val])-->
+<!--if i % 10 == 0:-->
+<!--print i-->
+<!--time.sleep(.1)-->
+<!--#停止-->
+<!--bus.write_i2c_block_data(0xc8>>1,0x00,[0x04])-->
+<!--bus.write_i2c_block_data(0xc8>>1,0x00,[0x07])-->
+<!---->
+<!--bus.close()-->
+<!--```-->
+
 
