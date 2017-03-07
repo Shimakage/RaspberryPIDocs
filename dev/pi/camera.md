@@ -13,9 +13,8 @@
 ## カメラを有効にする
 
 ```shell
-$ sudo raspi-condig
+$ sudo raspi-config
 ```
-
 6. Enable Cameraを選択し、カメラモジュールを有効にする。
 
 ## カメラの撮影
