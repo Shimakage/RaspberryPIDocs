@@ -4,6 +4,14 @@
 
 ![](/img/camera/picam001.png)
 
+## PiCameraを有効にする
+
+```shell
+$ sudo raspi-config
+```
+
+でCameraをEnableにする
+
 ## PiCameraの動作確認
 
 ```shell
@@ -16,6 +24,31 @@ $ vcgencmd get_camera
 |supported=1 detected=0|カメラが有効になっている状態で、カメラが認識できない|
 |supported=0 detected=1|カメラが有効になっていない状態で、カメラが認識できている|
 |supported=1 detected=1|カメラが有効になっている状態で、カメラが認識できている|
+
+
+supported=1 detected=1になっていれば、動作する。
+
+## Jupyterで10行でデジカメを作る
+
+```python
+import RPi.GPIO as GPIO
+import picamera
+
+BUTTONPIN = 5
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(BUTTONPIN, GPIO.IN)
+
+camera = picamera.PiCamera()
+camera.start_preview(alpha=255)
+
+try:
+    while True:
+        if( GPIO.input(BUTTONPIN)): camera.capture("test.jpg")
+except KeyboardInterrupt:
+    camera.stop_preview()
+    camera.close()
+```
 
 ## トラブルシューティング
 
