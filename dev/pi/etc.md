@@ -24,6 +24,17 @@ BACKSPACE="guess"
 
     $ sudo /etc/init.d/console-setup restart
 
+## ソフトウェアキーボードをインストールする
+
+```
+sudo apt-get install matchbox-keyboard
+
+matchbox-keyboard &
+```
+
+参考
+https://raspberrypi.akaneiro.jp/archives/405#i-2
+
 
 ## L-02Cを利用したLTE接続方法
 
