@@ -129,3 +129,49 @@ while True:
 
 #time.sleep(1)で1秒ごとに距離を出力する。
 ```
+
+### アドレスの変更方法
+
+Lidar Lite V3 を一つだけ接続する場合ならば、I2Cのアドレスは0x62であり、普通に動作する。
+しかし、複数個つける場合、Lidar Lite V3はI2Cに接続されると、自動的にアドレスが0x62に設定されてしまうので競合状態になってしまう。
+これを防ぐため、複数個接続する場合はLidar Lite V3のアドレスを変更しなければならない。
+
+## Sample
+
+```
+# coding: utf-8
+
+# lidar lite v3のアドレスを変更する
+# lidar lite v3のアドレスはraspberry piに接続すると自動的に 0x62になる
+# これは２つ繋げてもどちらもアドレスが0x62になってしまうので誤作動の原因となる
+# これを解決するために下のようにアドレスを変更しなければいけない
+
+#lider lite v3
+
+ import smbus
+
+ bus = smbus.SMBus(1)  #I2Cのバス番号
+ address = 0x62
+ #Lider Lite v3のアドレス
+ #アドレスは接続すると自動的に 0x62 になるので注意
+
+ High_address = 0x16
+ Low_address = 0x17
+
+ target_high = 0x18
+ target_low = 0x19
+
+ new_address = 0x56
+ # このプログラムを実行すると new_address が lidar のI2Cのアドレスになる。
+ # アドレスが奇数だと自動的に偶数のアドレスに格納されるので注意
+
+ high = bus.read_byte_data(address, High_address)
+ low = bus.read_byte_data(address, Low_address)
+
+ bus.write_byte_data( address,target_high , high )
+ bus.write_byte_data( address,target_low , low  )
+
+ bus.write_block_data(address , 0x1a , [new_address])
+ bus.write_block_data(address , 0x1e , [0x08])
+
+```
