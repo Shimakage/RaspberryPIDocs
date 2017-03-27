@@ -73,7 +73,7 @@ try:
 		ambient = readadc(LIGHTPIN)
 		sys.stdout.write("\rambient = %f" % (ambient))
         sys.stdout.flush()
-		value = arduino_map(data, 0, 1023, 0, 100)
+		value = arduino_map(ambient, 0, 1023, 0, 100)
 		LED.ChangeDutyCycle(value)
 		time.sleep( 0.01 )
 except KeyboardInterrupt:
