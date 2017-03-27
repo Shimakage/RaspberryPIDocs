@@ -70,7 +70,7 @@ spi.open(0,0)
 
 try:
 	while True:
-		data = readadc(LIGHTPIN)
+		ambient = readadc(LIGHTPIN)
 		sys.stdout.write("\rambient = %f" % (ambient))
         sys.stdout.flush()
 		value = arduino_map(data, 0, 1023, 0, 100)
