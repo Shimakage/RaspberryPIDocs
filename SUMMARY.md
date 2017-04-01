@@ -92,6 +92,9 @@
     * [Motor](motor/motor.md)
 * Camera
     * [PiCamera](camera/picamera.md)
+* OpenRTM
+    * [OpenRTMのインストール](openrtm/dev.md)
+    * [Jupyterからの呼び出し](openrtm/dev_jupyter.md)
 * Kaden
     * [#1501 Propeller Kit](kit_kaden/1501_kit_propeller.md)
     * [#1503 SmartLight Kit](kit_kaden/1503_kit_smartlight.md)
