@@ -2,7 +2,7 @@
 
 ## fabo-wifiswitch - v1.0
 * WiFi AP / WiFi Static IP / WiFi DHCP Client 切り替えツール
-  * https://github.com/FaBoPlatform/RaspberryPIDocs/package/fabo-wifiswitch_1.0_armhf.deb
+  * https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0_armhf.deb
   * 必要なパッケージ:
     * apt-get install hostapd dnsmasq
   * インストール：
@@ -57,7 +57,7 @@ sudo apt-get install hostapd dnsmasq
 ########################################
 # FaBo WiFi Switchインストール
 ########################################
-sudo curl -o https://github.com/FaBoPlatform/RaspberryPIDocs/package/fabo-wifiswitch_1.0_armhf.deb | dpkg -i
+sudo curl -o https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0_armhf.deb | dpkg -i
 
 # /root/.bashrcに追記
 sudo sh -c "echo 'export PATH=\$PATH:/opt/fabo/bin' >> /root/.bashrc"
