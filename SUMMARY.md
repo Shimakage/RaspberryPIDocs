@@ -1,6 +1,8 @@
 # Summary
 
 * [はじめに](README.md)
+* [RaspberryPI 3 FaBo Packages](packages/README.md)
+    * [ネットワーク設定ツール](packages/README.md)
 * [RaspberryPI 2/3](dev/pi/rappi.md)
     * [RASPBIAN Pixelのインストール](dev/pi/install_pixel.md)
     * [ログイン](dev/pi/login.md)
