@@ -30,7 +30,31 @@ $ sudo pip install panda numpy
 $ sudo apt-get install python-matplotlib
 ```
 
+Matplot libでは、SWAPが必要になるので
 
+swap停止
+
+```shell
+$ sudo /etc/init.d/dphys-swapfile stop
+```
+swap増加
+
+```shell
+$ sudo vi /etc/dphys-swapfile
+```
+
+`/etc/dphys-swapfile`
+
+```
+CONF_SWAPSIZE=1024
+```
+
+swap起動
+
+```shell
+$ sudo time /etc/init.d/dphys-swapfile start
+$ reboot
+```
 
 ## 固定Tokenの作成
 
