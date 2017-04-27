@@ -12,7 +12,7 @@ Description = Jupyter Notebook
 
 [Service]
 PIDFile=/var/run/jupyter.pid
-ExecStart=/usr/local/bin/jupyter-notebook --ip= --config/home/pi/.jupyter/jupyter_notebook_config.py
+ExecStart=/usr/local/bin/jupyter-notebook --ip= --config=/home/pi/.jupyter/jupyter_notebook_config.py
 User=pi
 Group=pi
 Restart=always
@@ -28,11 +28,11 @@ WantendBy=multi-user.target
 
 ```shell
 $ systemctl list-unit-files --type=service | grep jupyter
-jupyter.service       disable
+jupyter.service       invalid
 ```
 
 ## Serviceの起動　
 
 ```shell
-$ systemctl enable jupyter
+$ sudo systemctl enable jupyter
 ```
