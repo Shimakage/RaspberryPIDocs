@@ -52,7 +52,7 @@ CONF_SWAPSIZE=1024
 swap起動
 
 ```shell
-$ sudo time /etc/init.d/dphys-swapfile start
+$ sudo /etc/init.d/dphys-swapfile start
 $ reboot
 ```
 
