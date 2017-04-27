@@ -69,3 +69,11 @@ DHCP mode
 ```shell
 $ sudo /opt/fabo/bin/wifi_switch --mode dhcp
 ```
+
+STATIC mode
+
+Defualt Datewayは192.168.0.1、Defaultの自分のIPは192.168.0.65
+
+```shell
+$ sudo /opt/fabo/bin/wifi_switch --mode static
+```
