@@ -3,14 +3,14 @@
 ## debを取得
 
 ```shell
-$ wget https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0_armhf.deb?raw=true
+$ curl -o https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0_armhf.deb
 ```
 
 ## インストール
 
 ```shell
 $ sudo apt-get install hostapd dnsmasq
-$ sudo apt-get install hostapd dnsmasq
+$ sudo dpkg -i fabo-wifiswitch_1.0_armhf.deb
 ```
 
 ## パスを通す
