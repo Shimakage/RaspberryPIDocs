@@ -3,7 +3,7 @@
 ## debを取得
 
 ```shell
-$ curl -o https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0_armhf.deb
+$ wget -O fabo-wifiswitch_1.0_armhf.deb https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0_armhf.deb?raw=true 
 ```
 
 ## インストール
@@ -21,7 +21,7 @@ $ sudo sh -c "echo 'export PATH=\$PATH:/opt/fabo/bin' >> /root/.bashrc"
 
 ## IP転送関連の設定
 
-`/etc/sysctl.conf` の`net.ipv4.ip_forward=1`を確認
+`/etc/sysctl.conf` の`net.ipv4.ip_forward=1`のコメントアウトを取り除く
 
 ```shell
 net.ipv4.ip_forward=1
@@ -37,6 +37,7 @@ IP転送が有効になっているかどうか確認する
 
 ```shell
 $ /sbin/sysctl net.ipv4.ip_forward
+net.ipv4.ip_forward=1
 ```
 
 ## dhcpcd関連

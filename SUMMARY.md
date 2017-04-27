@@ -1,8 +1,6 @@
 # Summary
 
 * [はじめに](README.md)
-* [RaspberryPI 3 FaBo Packages](packages/README.md)
-    * [ネットワーク設定ツール](packages/README.md)
 * [RaspberryPI 2/3](dev/pi/rappi.md)
     * [RASPBIAN Pixelのインストール](dev/pi/install_pixel.md)
     * [ログイン](dev/pi/login.md)
@@ -120,3 +118,4 @@
     * [Hostdap](dev/pi/hostdap.md)
     * [hostapdとWifiClientの切り替え](dev/pi/hostapd_sw1.md)
     * [hostapdとWifiClientの切り替え(#117使用)](dev/pi/hostapd_sw2.md)
+    * [ネットワーク設定ツール](packages/README.md)
