@@ -79,42 +79,13 @@ c.NotebookApp.tokenのコメントアウトを消し、任意のTokenを指定�
 c.NotebookApp.token = 'fabo'
 ```
 
-## Jupyterの自動起動
+## Jupyterの起動
 
-```
-$ sudo vi /etc/rc.local
-```
-
-`/etc/rc.local`
-```
-#!/bin/sh -e
-#
-# rc.local
-#
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-#
-# By default this script does nothing.
-
-# Print the IP address
-_IP=$(hostname -I) || true
-if [ "$_IP" ]; then
-  printf "My IP address is %s\n" "$_IP"
-fi
-
-set -- $_IP
-jupyter notebook --ip=$1 --notebook-dir=/home/pi/ --config=/home/pi/.jupyter/jupyter_notebook_config.py &
-
-exit 0
+```shell
+$ jupyter-notebook --ip= --config=/home/pi/.jupyter/jupyter_notebook_config.py
 ```
 
-## Browserから起動
-
-```
+```shell
 $ ifconfig -a
 ```
 
