@@ -21,7 +21,7 @@ WorkingDirectory=/home/pi/Documents
 Type=simple
 
 [Install]
-WantendBy=multi-user.target
+WantedBy=multi-user.target
 ```
 
 ## 設定の確認
