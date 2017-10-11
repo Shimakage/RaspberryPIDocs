@@ -91,6 +91,9 @@
 * OpenRTM
     * [OpenRTMのインストール](openrtm/dev.md)
     * [Jupyterからの呼び出し](openrtm/dev_jupyter.md)
+* Data解析
+    * [Inluxdbのインストール](data/influxdb.md)
+    * [InluxdbのWebAPI](data/influxapi.md)
 * Kaden
     * [#1501 Propeller Kit](kit_kaden/1501_kit_propeller.md)
     * [#1503 SmartLight Kit](kit_kaden/1503_kit_smartlight.md)
