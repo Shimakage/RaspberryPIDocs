@@ -6,6 +6,25 @@
 
 設定ファイル:/opt/fabo/conf/wifi_switch.conf
 
+## fabo-wifiswitch - v1.0.2
+  * 変更点
+    * 表示のタイプミスを追加
+
+* WiFi AP / WiFi Static IP / WiFi DHCP Client 切り替えツール
+  * https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0.2_armhf.deb
+  * 必要なパッケージ:
+    * apt-get install hostapd dnsmasq
+  * インストール：
+    * dpkg -i fabo-wifiswitch_1.0.2_armhf.deb
+  * WiFi接続先設定:
+    * wpa_passphrase 'SSID' 'PASSWORD' >> /etc/wpa_supplicant/wpa_supplicant.conf
+  * 実行:
+    * /opt/fabo/bin/wifi_switch --mode ap
+  * 設定ファイル:
+    * /opt/fabo/conf/wifi_switch.conf
+  * ヘルプ
+    * /opt/fabo/bin/wifi_switch -h
+
 ## fabo-wifiswitch - v1.0.1
   * 変更点
     * 多重起動防止を追加
