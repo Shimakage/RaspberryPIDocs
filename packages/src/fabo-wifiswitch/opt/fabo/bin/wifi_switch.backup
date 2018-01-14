@@ -1,0 +1,557 @@
+#!/bin/bash
+# GClue K.K.
+# Raspberry Pi3 WiFi DHCP Client Mode / WiFi StaticIP Client Mode / WiFi AP Mode Switcher
+#
+# priority: command line option > config file > script default
+# Config:
+# /opt/fabo/conf/wifi_switch.conf
+#
+# WiFi AP Mode
+# sudo /opt/fabo/bin/wifi_switch --mode ap
+# WiFi StaticIP Client Mode
+# sudo /opt/fabo/bin/wifi_switch --mode static
+# WiFi DHCP Client Mode
+# sudo /opt/fabo/bin/wifi_switch --mode dhcp
+BASENAME=${0##*/}
+export LANG=C
+export LANGUAGE=$LANG
+export LC_ALL=$LANG
+
+
+MESSAGE="Raspberry Pi3 WiFi AP Mode / WiFi StaticIP Client Mode / WiFi DHCP Client Mode Switcher"
+VERSION="1.0"
+
+
+########################################
+# check WiFi BSSID
+########################################
+BSSID_PATTERN='^[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}$'
+MAYBE_BSSID=`ifconfig wlan0 | grep HWaddr | awk '{print $NF}'`
+BSSID=`echo $MAYBE_BSSID | sed -n "s/$BSSID_PATTERN/\0/p"`
+
+if [ $MAYBE_BSSID == $BSSID ]; then
+    UPPER_BSSID=${MAYBE_BSSID^^}
+    SSID_SUFFIX=`echo $UPPER_BSSID |  sed "s/://g"`
+else
+    SSID_SUFFIX=
+fi
+
+. /opt/fabo/conf/wifi_switch.conf
+
+# DEFAULT Values
+DEFAULT_MODE=		# [option]
+DEFAULT_TEST='off'	# [option]
+# WiFi AP Mode
+DEFAULT_AP_SSID='Pi3-AP'${SSID_SUFFIX}	# [option][conf]
+DEFAULT_AP_PASSWORD=raspberry			# [option][conf] paswords must be at 8-63 characters
+DEFAULT_AP_CHANNEL=11					# [option][conf]
+DEFAULT_AP_ADDRESS=172.31.0.1			# [conf]
+DEFAULT_AP_NETMASK=255.255.255.0		# [conf]
+DEFAULT_AP_NETWORK=172.31.0.0			# [conf]
+DEFAULT_AP_BROADCAST=172.31.0.255		# [conf]
+# WiFi StaticIP Client Mode
+DEFAULT_STATIC_ADDRESS=192.168.0.65		# [conf]
+DEFAULT_STATIC_NETMASK=255.255.255.0	# [conf]
+DEFAULT_STATIC_NETWORK=192.168.0.0		# [conf]
+DEFUALT_STATIC_BROADCAST=192.168.0.255	# [conf]
+DEFAULT_STATIC_GATEWAY=192.168.0.1		# [conf]
+DEFUALT_STATIC_DNS_NAMESERVERS=8.8.8.8	# [conf]
+DEFAULT_STATIC_WPA_CONF=/etc/wpa_supplicant/wpa_supplicant.conf	# [conf]
+# WiFi DHCP Client Mode
+DEFAULT_DHCP_WPA_CONF=/etc/wpa_supplicant/wpa_supplicant.conf	# [conf]
+
+# initialize
+MODE=
+TEST=
+SSID=
+PASSWORD=
+CHANNEL=
+ADDRESS=
+NETMASK=
+NETWORK=
+BROADCAST=
+GATEWAY=
+DNS_NAMESERVERS=
+WPA_CONF=
+
+# auto suffix
+AUTO_SUFFIX=.auto
+
+
+usage() {
+    echo "$MESSAGE" - "$VERSION"
+    echo "Usage: sudo $BASENAME [OPTIONS]"
+    echo "Options:"
+    echo "       -h, --help"
+    echo "              show this"
+    echo "       -v, --version"
+    echo "              show version information."
+    echo "       --mode [ap|static|dhcp]"
+    echo "              switch WiFi mode."
+    echo "              [dhcp] - WiFi DHCP Client Mode"
+    echo "              [static] - WiFi StaticIP Client Mode"
+    echo "              [ap] - WiFi Access Point Mode"
+    echo "              --mode dhcp"
+    echo "              default: No default."
+    echo "       --ssid PATTERN"
+    echo "              with --mode ap: set SSID."
+    echo "              --ssid \"MySSID\""
+    echo "              default: \"$DEFAULT_AP_SSID\""
+    echo "       --password PATTERN"
+    echo "              with --mode ap: set WiFi AP password."
+    echo "              paswords must be at 8-63 characters."
+    echo "              --password MyPassword"
+    echo "              default: $DEFAULT_AP_password"
+    echo "       --channel PATTERN"
+    echo "              with --mode ap: set WiFi channel."
+    echo "              --channel 10"
+    echo "              default: $DEFAULT_AP_CHANNEL"
+    echo "       --test PATTERN"
+    echo "              test mode."
+    echo "              'on' - check only."
+    echo "              'off' - write config, restart network."
+    echo "              --test on"
+    echo "              default: $DEFAULT_TEST"
+    echo ""
+    echo "Config File:"
+    echo "        /opt/fabo/conf/wifi_switch.conf"
+    echo ""
+    echo "Config Priority:"
+    echo "       command line option > config file > script default"
+}
+
+declare -i argc=0
+declare -a argv=()
+
+while (( $# > 0 ))
+do
+    case "$1" in
+        '-h'|'--help' )
+            usage
+            exit 1
+            ;;
+        '-v'|'--version' )
+            echo "$MESSAGE"
+            echo "$VERSION"
+            exit 1
+            ;;
+        '--mode' )
+            if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+                echo "'$(echo $1 | sed 's/^-*//')' option requires an argumant."
+                echo "see: $BASENAME -h"
+                exit 1
+            fi
+            OPTION_MODE="$2"
+            shift 2
+            ;;
+        '--ssid' )
+            if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+                echo "'$(echo $1 | sed 's/^-*//')' option requires an argumant."
+                echo "see: $BASENAME -h"
+                exit 1
+            fi
+            OPTION_SSID="$2"
+            shift 2
+            ;;
+        '--password' )
+            if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+                echo "'$(echo $1 | sed 's/^-*//')' option requires an argumant."
+                echo "see: $BASENAME -h"
+                exit 1
+            fi
+            OPTION_PASSWORD="$2"
+            shift 2
+            ;;
+        '--channel' )
+            if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+                echo "'$(echo $1 | sed 's/^-*//')' option requires an argumant."
+                echo "see: $BASENAME -h"
+                exit 1
+            fi
+            OPTION_CHANNEL="$2"
+            shift 2
+            ;;
+        '--test' )
+            if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+                echo "'$(echo $1 | sed 's/^-*//')' option requires an argumant."
+                echo "see: $BASENAME -h"
+                exit 1
+            fi
+            OPTION_TEST="$2"
+            shift 2
+            ;;
+        '-x'|'--x-something' )
+            if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+                echo "no option"
+                shift
+            else
+                echo "one or more options"
+                echo "one in $2 and next in param"
+                shift 2
+            fi
+            ;;
+        '-y'|'--y-something' )
+            echo "multiple options in param"
+            shift 1
+            ;;
+        -*)
+            echo "Unknown option: $1" 1>&2
+            exit 1
+            ;;
+        *)
+            ((++argc))
+            param=("${argc[@]}" "$1")
+            param+=( "$1" )
+            echo "param: $param"
+            shift 1
+            ;;
+
+    esac
+done
+
+if [[ `whoami` != "root" ]]
+then
+    echo "$MESSAGE" - "$VERSION"
+    echo "Usage: sudo $BASENAME [OPTIONS]"
+    exit 1
+fi
+
+
+########################################
+# ASSIGN OPTION VALUES
+########################################
+if [ -n "$OPTION_MODE" ]; then
+    MODE=$OPTION_MODE
+else
+    MODE=$DEFAULT_MODE
+fi
+if [ -n "$OPTION_SSID" ]; then
+    SSID="$OPTION_SSID"
+else
+    if [ -n "$ap_ssid" ]; then
+        SSID="$ap_ssid"
+    else
+        SSID="$DEFAULT_AP_SSID"
+    fi
+fi
+if [ -n "$OPTION_PASSWORD" ]; then
+    PASSWORD="$OPTION_PASSWORD"
+else
+    if [ -n "$ap_password" ]; then
+        PASSWORD="$ap_password"
+    else
+        PASSWORD="$DEFAULT_AP_PASSWORD"
+    fi
+fi
+if [ -n "$OPTION_CHANNEL" ]; then
+    CHANNEL=$OPTION_CHANNEL
+else
+    if [ -n "$ap_channel" ]; then
+        CHANNEL=$ap_channel
+    else
+        CHANNEL=$DEFAULT_AP_CHANNEL
+    fi
+fi
+if [ -z "$OPTION_TEST" ]; then
+    OPTION_TEST=$DEFAULT_TEST
+fi
+
+########################################
+# MUST VARIABLE VALIDATION
+########################################
+case "$MODE" in
+    'ap'|'static'|'dhcp' )
+        echo "wifi $MODE mode."
+        ;;
+    *)
+        echo "Unknown mode option."
+        echo "see $BASENAME -h"
+        exit 1
+        ;;
+esac
+case "$OPTION_TEST" in
+    'on' )
+        #echo "test on: check only."
+        TEST=".auto"
+        ;;
+    'off' )
+        #echo "test off: write config, restart network."
+        TEST=
+        ;;
+    *)
+        echo "Unknown test option."
+        echo "see $BASENAME -h"
+        exit 1
+        ;;
+esac
+
+########################################
+# ASSIGN CONFIG VALUES
+########################################
+case "$MODE" in
+    'ap' )
+        if [ -n "$ap_address" ]; then
+            ADDRESS=$ap_address
+        else
+            ADDRESS=$DEFAULT_AP_ADDRESS
+        fi
+        if [ -n "$ap_netmask" ]; then
+            NETMASK=$ap_netmask
+        else
+            NETMASK=$DEFAULT_AP_NETMASK
+        fi
+        if [ -n "$ap_network" ]; then
+            NETWORK=$ap_network
+        else
+            NETWORK=$DEFAULT_AP_NETWORK
+        fi
+        if [ -n "$ap_broadcast" ]; then
+            BROADCAST=$ap_broadcast
+        else
+            BROADCAST=$DEFAULT_AP_BROADCAST
+        fi
+        ;;
+    'static' )
+        if [ -n "$static_address" ]; then
+            ADDRESS=$static_address
+        else
+            ADDRESS=$DEFAULT_STATIC_ADDRESS
+        fi
+        if [ -n "$static_netmask" ]; then
+            NETMASK=$static_netmask
+        else
+            NETMASK=$DEFAULT_STATIC_NETMASK
+        fi
+        if [ -n "$static_network" ]; then
+            NETWORK=$static_network
+        else
+            NETWORK=$DEFAULT_STATIC_NETWORK
+        fi
+        if [ -n "$static_broadcast" ]; then
+            BROADCAST=$static_broadcast
+        else
+            BROADCAST=$DEFAULT_STATIC_BROADCAST
+        fi
+        if [ -n "$static_gateway" ]; then
+            GATEWAY=$static_gateway
+        else
+            GATEWAY=$DEFAULT_STATIC_GATEWAY
+        fi
+        if [ -n "$static_dns_nameservers" ]; then
+            DNS_NAMESERVERS=$static_dns_nameservers
+        else
+            DNS_NAMESERVERS=$DEFAULT_STATIC_DNS_NAMESERVERS
+        fi
+        if [ -n "$static_wpa_conf" ]; then
+            WPA_CONF=$static_wpa_conf
+        else
+            WPA_CONF=$DEFAULT_STATIC_WPA_CONF
+        fi
+        ;;
+    'dhcp' )
+        if [ -n "$dhcp_wpa_conf" ]; then
+            WPA_CONF=$dhcp_wpa_conf
+        else
+            WPA_CONF=$DEFAULT_dhcp_WPA_CONF
+        fi
+        ;;
+    *)
+        echo "Unknown mode option."
+        echo "see $BASENAME -h"
+        exit 1
+        ;;
+esac
+
+
+########################################
+# CONFIG VARIABLE VALIDATION
+########################################
+PW_LEN=`echo -n "$PASSWORD" | wc -m`
+if [ $PW_LEN -lt 8 ] || [ $PW_LEN -gt 63 ]; then
+    echo "paswords must be at 8-63 characters."
+    exit 1
+fi
+
+
+########################################
+# /etc/network/interfaces
+########################################
+write_interfaces_common() {
+    cat <<EOF>/etc/network/interfaces$AUTO_SUFFIX
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
+
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
+auto lo
+iface lo inet loopback
+
+iface eth0 inet manual
+
+EOF
+}
+
+
+########################################
+# WiFi AP Mode
+########################################
+write_interfaces_for_ap() {
+    write_interfaces_common
+    cat <<EOF>>/etc/network/interfaces$AUTO_SUFFIX
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+    address $ADDRESS
+    netmask $NETMASK
+    network $NETWORK
+    broadcast $BROADCAST
+EOF
+}
+
+
+########################################
+# WiFi StaticIP Client Mode
+########################################
+write_interfaces_for_static() {
+    write_interfaces_common
+    cat <<EOF>>/etc/network/interfaces$AUTO_SUFFIX
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+    address $ADDRESS
+    netmask $NETMASK
+    network $NETWORK
+    broadcast $BROADCAST
+    gateway $GATEWAY
+    dns-nameservers $DNS_NAMESERVERS
+    wpa-conf $WPA_CONF
+EOF
+}
+
+
+########################################
+# WiFi DHCP Client Mode
+########################################
+write_interfaces_for_dhcp() {
+    write_interfaces_common
+    cat <<EOF>>/etc/network/interfaces$AUTO_SUFFIX
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+    wpa-driver wext
+    wpa-conf $WPA_CONF
+EOF
+}
+
+
+########################################
+# /etc/hostapd/hostapd.conf
+########################################
+write_hostapd() {
+    cat <<EOF>/etc/hostapd/hostapd.conf$AUTO_SUFFIX
+# This is the name of the WiFi interface we configured above
+interface=wlan0
+# Use the nl80211 driver with the brcmfmac driver
+driver=nl80211
+# This is the name of the network
+ssid=$SSID
+# Use the 2.4GHz band
+hw_mode=g
+# Use channel $CHANNEL
+channel=$CHANNEL
+# Enable 802.11n
+ieee80211n=1
+# Enable WMM
+wmm_enabled=1
+# Enable 40MHz channels with 20ns guard interval
+ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]
+# Accept all MAC addresses
+macaddr_acl=0
+# Use WPA authentication
+auth_algs=1
+# Require clients to know the network name
+ignore_broadcast_ssid=0
+# Use WPA2
+wpa=2
+# Use a pre-shared key
+wpa_key_mgmt=WPA-PSK
+# The network passphrase
+wpa_passphrase=$PASSWORD
+# Use AES, instead of TKIP
+rsn_pairwise=CCMP
+EOF
+}
+
+
+case "$MODE" in
+    'ap' )
+        write_hostapd
+        write_interfaces_for_ap
+        ;;
+    'static' )
+        write_interfaces_for_static
+        ;;
+    'dhcp' )
+        write_interfaces_for_dhcp
+        ;;
+    *)
+        echo "Unknown mode."
+        echo "see $BASENAME -h"
+        exit 1
+        ;;
+esac
+
+
+if [ ! -z "$TEST" ]; then
+    if [ $MODE == 'ap' ]; then
+        diff -u /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.conf$AUTO_SUFFIX
+    fi
+    diff -u /etc/network/interfaces /etc/network/interfaces$AUTO_SUFFIX
+else
+    if [ $MODE == 'ap' ]; then
+        mv /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.conf.bak
+        mv /etc/hostapd/hostapd.conf$AUTO_SUFFIX /etc/hostapd/hostapd.conf
+    fi
+    mv /etc/network/interfaces /etc/network/interfaces.bak
+    mv /etc/network/interfaces$AUTO_SUFFIX /etc/network/interfaces
+
+    DMSG=`systemctl stop hostapd`
+    DMSG=`systemctl stop dnsmasq`
+
+    /etc/init.d/networking stop
+    /etc/init.d/networking start
+    sudo ifup wlan0
+
+    if [ $MODE == 'ap' ]; then
+        DMSG=`systemctl enable hostapd 2>&1 `
+        DMSG=`systemctl enable dnsmasq 2>&1`
+        DMSG=`systemctl start hostapd 2>&1`
+        DMSG=`systemctl start dnsmasq 2>&1`
+        HOSTAPD_STATUS=`systemctl status hostapd 2>&1`
+        DNSMASQ_STATUS=`systemctl status dnsmasq 2>&1`
+        HOSTAPD_ACTIVE=`echo "$HOSTAPD_STATUS" | grep "Active: active (running)"`
+        DNSMASQ_ACTIVE=`echo "$DNSMASQ_STATUS" | grep "Active: active (running)"`
+        echo -en "hostapd \e7[....]"
+        if [ -n "$HOSTAPD_ACTIVE" ]; then
+            echo -e "\e8[\e[32m success \e[m]"
+        else
+            echo -e "\e8[\e[31m fail \e[m]"
+        fi
+        echo -en "dnsmasq \e7[....]"
+        if [ -n "$DNSMASQ_ACTIVE" ]; then
+            echo -e "\e8[\e[32m success \e[m]"
+        else
+            echo -e "\e8[\e[31m fail \e[m]"
+        fi
+
+    else
+        DMSG=`systemctl disable hostapd 2>&1`
+        DMSG=`systemctl disable dnsmasq 2>&1`
+    fi
+
+    ifconfig wlan0
+    iwconfig wlan0
+fi
