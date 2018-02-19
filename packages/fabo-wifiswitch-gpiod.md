@@ -41,7 +41,8 @@ MODEスイッチが[Slave]の時、
 ########################################
 sudo apt-get install python-pip python-rpi.gpio
 sudo pip install futures
-sudo curl -o https://github.com/FaBoPlatform/RaspberryPIDocs/package/fabo-wifiswitch-gpiod_1.0.1_armhf.deb | dpkg -i
+sudo wget https://github.com/FaBoPlatform/RaspberryPIDocs/raw/master/packages/fabo-wifiswitch-gpiod_1.0.1_armhf.deb
+sudo dpkg -i fabo-wifiswitch-gpiod_1.0.1_armhf.deb
 sudo systemctl enable wifi_switchd
 sudo systemctl start wifi_switchd
 
