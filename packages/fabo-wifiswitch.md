@@ -85,7 +85,7 @@ sudo apt-get install hostapd dnsmasq
 ########################################
 # FaBo WiFi Switchインストール
 ########################################
-sudo wget wget https://github.com/FaBoPlatform/RaspberryPIDocs/raw/master/packages/fabo-wifiswitch_1.0.2_armhf.deb
+sudo wget https://github.com/FaBoPlatform/RaspberryPIDocs/raw/master/packages/fabo-wifiswitch_1.0.2_armhf.deb
 sudo dpkg -i fabo-wifiswitch_1.0.2_armhf.deb
 
 # /root/.bashrcに追記
