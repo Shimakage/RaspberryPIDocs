@@ -8,7 +8,7 @@ Fabo基板付属のWiFi切り替えスイッチによる WiFi AP / WiFi DHCP Cli
     * ジャンパピン[N-REST]が接続されていない時に、デフォルト設定に戻すように変更
 
 * Fabo WiFi Switch GPIO Daemon: Fabo基板付属のWiFi切り替えスイッチによる WiFi AP / WiFi DHCP Client 切り替えツール
-  * https://github.com/FaBoPlatform/RaspberryPIDocs/package/fabo-wifiswitch-gpiod_1.0.1_armhf.deb
+  * https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch-gpiod_1.0.1_armhf.deb
   * 必要なパッケージ:
     * [fabo-wifiswitch v1.0.1](./fabo-wifiswitch.md) 以上
     * apt-get install python-pip python-rpi.gpio
