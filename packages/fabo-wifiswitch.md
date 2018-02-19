@@ -44,22 +44,6 @@
   * ヘルプ
     * /opt/fabo/bin/wifi_switch -h
 
-## fabo-wifiswitch - v1.0
-* WiFi AP / WiFi Static IP / WiFi DHCP Client 切り替えツール
-  * https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0_armhf.deb
-  * 必要なパッケージ:
-    * apt-get install hostapd dnsmasq
-  * インストール：
-    * dpkg -i fabo-wifiswitch_1.0_armhf.deb
-  * WiFi接続先設定:
-    * wpa_passphrase 'SSID' 'PASSWORD' >> /etc/wpa_supplicant/wpa_supplicant.conf
-  * 実行:
-    * /opt/fabo/bin/wifi_switch --mode ap
-  * 設定ファイル:
-    * /opt/fabo/conf/wifi_switch.conf
-  * ヘルプ
-    * /opt/fabo/bin/wifi_switch -h
-
 ###### 機能説明
 WiFi AP/Static IP/DHCPの設定と切り替えが簡単に出来るように用意
 [static|dhcp]モードの時は別途WiFiルータに接続するので、WiFi接続先設定の用意と、staticモードなら設定ファイル(/opt/fabo/conf/wifi_switch.conf)のIPアドレスの設定が必要。
@@ -101,7 +85,7 @@ sudo apt-get install hostapd dnsmasq
 ########################################
 # FaBo WiFi Switchインストール
 ########################################
-sudo curl -o https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0.1_armhf.deb | dpkg -i
+sudo curl -o https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.0.2_armhf.deb | dpkg -i
 
 # /root/.bashrcに追記
 sudo sh -c "echo 'export PATH=\$PATH:/opt/fabo/bin' >> /root/.bashrc"

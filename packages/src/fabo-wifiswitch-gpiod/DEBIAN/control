@@ -1,6 +1,6 @@
 Source: fabo-wifiswitch-gpiod
 Package: fabo-wifiswitch-gpiod
-Version: 1.0
+Version: 1.0.1
 Priority: optional
 Maintainer: Yoshiroh Takanashi <takanashi@gclue.jp>
 Architecture: armhf
