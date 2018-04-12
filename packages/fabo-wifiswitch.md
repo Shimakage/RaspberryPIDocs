@@ -6,6 +6,25 @@
 
 設定ファイル:/opt/fabo/conf/wifi_switch.conf
 
+## fabo-wifiswitch - v1.1.0
+  * 変更点
+    * Raspbian Stretch対応
+
+* WiFi AP / WiFi Static IP / WiFi DHCP Client 切り替えツール
+  * https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.1.0_armhf.deb
+  * 必要なパッケージ:
+    * apt-get install hostapd dnsmasq
+  * インストール：
+    * dpkg -i fabo-wifiswitch_1.1.0_armhf.deb
+  * WiFi接続先設定:
+    * wpa_passphrase 'SSID' 'PASSWORD' >> /etc/wpa_supplicant/wpa_supplicant.conf
+  * 実行:
+    * /opt/fabo/bin/wifi_switch --mode ap
+  * 設定ファイル:
+    * /opt/fabo/conf/wifi_switch.conf
+  * ヘルプ
+    * /opt/fabo/bin/wifi_switch -h
+
 ## fabo-wifiswitch - v1.0.2
   * 変更点
     * 表示のタイプミスを追加
@@ -74,19 +93,26 @@ wifi_switch -h
 ###### インストール手順
 ```
 ########################################
+# isc-dhcp-serverを無効化
+########################################
+sudo systemctl stop isc-dhcp-server
+sudo systemctl disable isc-dhcp-server
+
+
+########################################
 # dnsmasq hostapd インストール
 # hostapd: WiFiアクセスポイント化
 # dnsmasq: DHCP/DNSサーバ
 ########################################
 sudo apt-get update
-sudo apt-get install hostapd dnsmasq
+sudo apt-get install -y hostapd dnsmasq
 
 
 ########################################
 # FaBo WiFi Switchインストール
 ########################################
-sudo wget https://github.com/FaBoPlatform/RaspberryPIDocs/raw/master/packages/fabo-wifiswitch_1.0.2_armhf.deb
-sudo dpkg -i fabo-wifiswitch_1.0.2_armhf.deb
+wget https://raw.githubusercontent.com/FaBoPlatform/RaspberryPIDocs/master/packages/fabo-wifiswitch_1.1.0_armhf.deb
+sudo dpkg -i fabo-wifiswitch_1.1.0_armhf.deb
 
 # /root/.bashrcに追記
 sudo sh -c "echo 'export PATH=\$PATH:/opt/fabo/bin' >> /root/.bashrc"
@@ -117,8 +143,41 @@ sudo sh -c "echo 'denyinterfaces wlan0' >> /etc/dhcpcd.conf"
 sudo sh -c "wpa_passphrase 'SSID' 'PASSWORD' >> /etc/wpa_supplicant/wpa_supplicant.conf"
 
 sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+```
 country=JP
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
 
+network={
+	ssid="SSID"
+	psk="PASSWORD"
+}
+```
+PASSWORDは暗号化することが可能です。
+```
+sudo wpa_passphrase 'SSID' 'PASSWORD'
+```
+実行結果
+```
+network={
+	ssid="SSID"
+	#psk="PASSWORD"
+	psk=c2161655c6ba444d8df94cbbf4e9c5c4c61fc37702b9c66ed37aee1545a5a333
+}
+```
+このコマンド実行結果のpskをPASSWORDの代わりに使うことが出来ます。
+
+暗号化パスワードを用いる場合：/etc/wpa_supplicant/wpa_supplicant.conf
+```
+country=JP
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+	ssid="SSID"
+	psk=c2161655c6ba444d8df94cbbf4e9c5c4c61fc37702b9c66ed37aee1545a5a333
+}
+```
 
 ########################################
 # WiFi モード切替

@@ -18,20 +18,19 @@ Fabo基板付属のWiFi切り替えスイッチによる WiFi AP / WiFi DHCP Cli
 
 
 ###### 機能説明
-ジャンパピン[N-REST]が接続されていない時、
+ジャンパピン[N-REST]が接続されていない時、以下のコマンドが実行され設定ファイルが初期化される。
   * /opt/fabo/bin/wifi_switch --print-config > /opt/fabo/conf/wifi_switch.conf
 
-が実行される。confファイルを変更している場合はジャンパピンを外しておくこと。
+confファイルを変更している場合は設定ファイルを初期化しないようにジャンパピンを接続しておくこと。
 
-MODEスイッチが[AP]の時、
+MODEスイッチが[AP]の時、以下のコマンドが実行され、APモードに切り替わる。（Raspberry Piがルータになる）
   * /opt/fabo/bin/wifi_switch --mode ap
 
-が実行される。
+SSID: RP3-APXXXXXX
+PASSWORD: raspberrypi
 
-MODEスイッチが[Slave]の時、
+MODEスイッチが[Slave]の時、以下のコマンドが実行され、DHCPモードに切り替わる。（ルータに接続する）
   * /opt/fabo/bin/wifi_switch --mode dhcp
-
-が実行される。
 
 
 ###### インストール手順
@@ -41,7 +40,7 @@ MODEスイッチが[Slave]の時、
 ########################################
 sudo apt-get install python-pip python-rpi.gpio
 sudo pip install futures
-sudo wget https://github.com/FaBoPlatform/RaspberryPIDocs/raw/master/packages/fabo-wifiswitch-gpiod_1.0.1_armhf.deb
+sudo wget https://raw.githubusercontent.com/FaBoPlatform/RaspberryPIDocs/master/packages/fabo-wifiswitch-gpiod_1.0.1_armhf.deb
 sudo dpkg -i fabo-wifiswitch-gpiod_1.0.1_armhf.deb
 sudo systemctl enable wifi_switchd
 sudo systemctl start wifi_switchd
