@@ -21,20 +21,19 @@ export LC_ALL=$LANG
 
 
 MESSAGE="Fabo WiFi Switch - Raspberry Pi3 WiFi AP Mode / WiFi StaticIP Client Mode / WiFi DHCP Client Mode Switch"
-VERSION="1.0.2"
+VERSION="1.1.0"
 
 INTERFACE=wlan0
 
 ########################################
 # CHECK WiFi BSSID
 ########################################
-BSSID_PATTERN='^[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}$'
-MAYBE_BSSID=`ifconfig $INTERFACE | grep HWaddr | awk '{print $NF}'`
-BSSID=`echo $MAYBE_BSSID | sed -n "s/$BSSID_PATTERN/\0/p"`
+BSSID_PATTERN='[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}:[0-9a-fA-F]\{2\}'
+BSSID=`ifconfig $INTERFACE | grep -o -e $BSSID_PATTERN`
 
-if [ $MAYBE_BSSID == $BSSID ]; then
-    UPPER_BSSID=${MAYBE_BSSID^^}
-    SSID_SUFFIX=`echo $UPPER_BSSID |  sed "s/://g" | cut -c 7-`
+if [ -n $BSSID ]; then
+    UPPER_BSSID=${BSSID^^}
+    SSID_SUFFIX=`echo $UPPER_BSSID | sed "s/://g" | cut -c 7-`
 else
     SSID_SUFFIX=
 fi
