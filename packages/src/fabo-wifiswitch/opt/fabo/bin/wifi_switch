@@ -21,7 +21,7 @@ export LC_ALL=$LANG
 
 
 MESSAGE="Fabo WiFi Switch - Raspberry Pi3 WiFi AP Mode / WiFi StaticIP Client Mode / WiFi DHCP Client Mode Switch"
-VERSION="1.0.1"
+VERSION="1.0.2"
 
 INTERFACE=wlan0
 
