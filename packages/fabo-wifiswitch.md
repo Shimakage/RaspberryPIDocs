@@ -6,9 +6,9 @@
 
 設定ファイル:/opt/fabo/conf/wifi_switch.conf
 
-## fabo-wifiswitch - v1.1.0
+## fabo-wifiswitch - v1.1.0 (Raspbian Jessie)
   * 変更点
-    * Raspbian Stretch対応
+    * AP名パーサ修正
 
 * WiFi AP / WiFi Static IP / WiFi DHCP Client 切り替えツール
   * https://github.com/FaBoPlatform/RaspberryPIDocs/blob/master/packages/fabo-wifiswitch_1.1.0_armhf.deb
@@ -25,7 +25,7 @@
   * ヘルプ
     * /opt/fabo/bin/wifi_switch -h
 
-## fabo-wifiswitch - v1.0.2
+## fabo-wifiswitch - v1.0.2 (Raspbian Jessie)
   * 変更点
     * 表示のタイプミスを追加
 
@@ -44,7 +44,7 @@
   * ヘルプ
     * /opt/fabo/bin/wifi_switch -h
 
-## fabo-wifiswitch - v1.0.1
+## fabo-wifiswitch - v1.0.1 (Raspbian Jessie)
   * 変更点
     * 多重起動防止を追加
 
