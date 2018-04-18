@@ -6,7 +6,6 @@
     * [ログイン](dev/pi/login.md)
     * [キーボードの日本語設定](dev/pi/keyboard.md)
     * [ネットワーク設定(Pixel)](dev/pi/wifi_pixel.md)
-    * [WifiSwitchの設定](dev/pi/wifiswitch.md)
     * [パッケージのUpdate](dev/pi/update.md)
     * [SSHを有効にする](dev/pi/ssh.md)
     * [電力に関して](dev/pi/power.md)
@@ -15,10 +14,11 @@
     * [ログイン](dev/pi/login.md)
     * [キーボードの日本語設定](dev/pi/keyboard.md)
     * [ネットワーク設定(lite)](dev/pi/wifi_lite.md)
-    * [WifiSwitchの設定](dev/pi/wifiswitch.md)
     * [パッケージのUpdate](dev/pi/update.md)
     * [SSHを有効にする](dev/pi/ssh.md)
     * [電力に関して](dev/pi/power.md)
+* Raspbian Stretch
+    * [I2C Kernel/smbus修正](dev/pi/stretch_i2c_kernel.md)
 * Jupyerデバイス化
     * [Jupyterのインストール](dev/pi/jupyter.md)
     * [JupyterのService化](dev/pi/jupyter_service.md)
