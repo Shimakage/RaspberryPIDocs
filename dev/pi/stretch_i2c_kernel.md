@@ -14,5 +14,6 @@ sudo reboot
 ```
 
 参考： <br>
+* [https://github.com/raspberrypi/firmware/issues/867](https://github.com/raspberrypi/firmware/issues/867)
 * [https://www.raspberrypi.org/forums/viewtopic.php?t=192958](https://www.raspberrypi.org/forums/viewtopic.php?t=192958)
 * [https://github.com/raspberrypi/firmware/issues/828](https://github.com/raspberrypi/firmware/issues/828)
