@@ -49,6 +49,7 @@ except KeyboardInterrupt:
 ```
 
 PWMによる転送をおこないます。
+以下のサンプルではGPIO5コネクタにLED Brickを接続し、LEDの明るさを変更しています。
 
 ```python
 # coding: utf-8
@@ -56,20 +57,22 @@ import RPi.GPIO as GPIO
 import time
 import sys
 
-LEDPIN = 4
+LEDPIN = 5
 
 GPIO.setwarnings(False)
 GPIO.setmode( GPIO.BCM )
 GPIO.setup( LEDPIN, GPIO.OUT )
 LED = GPIO.PWM(LEDPIN, 100)
+LED.start(0)
 value = 0
 
 try:
 	while True:
-	LED.ChangeDutyCycle(value % 100)
-	time.sleep(0.01)
-	value += 1
+		LED.ChangeDutyCycle(value % 100)
+		time.sleep(0.01)
+		value += 1
 except KeyboardInterrupt:
+	LED.stop(0)
 	GPIO.cleanup()
 	sys.exit(0)
 ```
